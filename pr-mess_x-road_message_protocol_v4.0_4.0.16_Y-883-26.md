@@ -1,19 +1,13 @@
-<embed src="media/image1.wmf" width="354" height="53" />
-
-<img src="media/image2.jpeg" width="210" height="117" />
-
-|                               |
-|-------------------------------|
-| X-Road: Message Protocol v4.0 
+#X-Road: Message Protocol v4.0
                                 
- **Technical Specification**    |
-| Version: 4.0.16               
+ **Technical Specification**    
+ Version: 4.0.16               
                                 
  16.05.2016                     
                                 
  30 pages                       
                                 
- Doc. ID: PR-MESS               |
+ Doc. ID: PR-MESS               
 
 |            |             |                                                                              |                    |
 |------------|-------------|------------------------------------------------------------------------------|--------------------|
@@ -23,9 +17,7 @@
 | 10.09.2015 | 4.0.4       | Fixed some typos                                                             | Siim Annuk         |
 | 16.09.2015 | 4.0.5       | Editorial changes made                                                       | Imbi Nõgisto       |
 | 30.09.2015 | 4.0.6       | Additional information added about requestHash header field and HTTP headers | Siim Annuk         |
-| 14.10.2015 | 4.0.7       | Note added about supported attachment encodings. Updated examples            | Siim Annuk,        
-                                                                                                                               
-                                                                                                           Ilja Kromonov       |
+| 14.10.2015 | 4.0.7       | Note added about supported attachment encodings. Updated examples            | Siim Annuk, Ilja Kromonov|
 | 17.10.2015 | 4.0.8       | Clarified must/MUST language                                                 | Margus Freudenthal |
 | 28.10.2015 | 4.0.9       | Better example messages added                                                | Siim Annuk         |
 | 28.10.2015 | 4.0.10      | Complete X-Road identifiers schema added                                     | Siim Annuk         |
@@ -36,7 +28,7 @@
 | 10.05.2016 | 4.0.15      | Added section about character encoding                                       | Kristo Heero       |
 | 16.05.2016 | 4.0.16      | Editorial changes made                                                       | Margus Freudenthal |
 
-Table of Contents
+##Table of Contents
 
 [License 4](#_Toc451189995)
 
@@ -109,7 +101,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 -   **X-Road service** – SOAP-based web service that is offered by an X-Road member or by a subsystem and that can be used by other X-Road members or subsystems.
 
-    1.  <span id="__RefHeading__1446_2115075793" class="anchor"><span id="_Toc451189998" class="anchor"></span></span>References
+##<span id="__RefHeading__1446_2115075793" class="anchor"><span id="_Toc451189998" class="anchor"></span></span>References
         ------------------------------------------------------------------------------------------------------------------------
 
 \[<span id="Ref_SOAP" class="anchor"></span>SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
@@ -183,45 +175,32 @@ xmlns="http://x-road.eu/xsd/identifiers"&gt;
 
 The XRoadIdentifierType complex type serves as the base for all other identifier types (derived by restriction). It contains a union of all fields that can be present in different identifiers. The attribute objectType contains the type of the identifier and can be used, for example, to distinguish between X-Road member and subsystem identifiers without resorting to conditions that check for presence of individual fields.
 
-&lt;xs:complexType name="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element minOccurs="0" ref="xRoadInstance"/&gt;
-
-&lt;xs:element minOccurs="0" ref="memberClass"/&gt;
-
-&lt;xs:element minOccurs="0" ref="memberCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="subsystemCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="serviceCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="serviceVersion"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required"/&gt;
-
-&lt;/xs:complexType&gt;
+```xml
+<xs:complexType name="XRoadIdentifierType">
+<xs:sequence>
+<xs:element minOccurs="0" ref="xRoadInstance"/>
+<xs:element minOccurs="0" ref="memberClass"/>
+<xs:element minOccurs="0" ref="memberCode"/>
+<xs:element minOccurs="0" ref="subsystemCode"/>
+<xs:element minOccurs="0" ref="serviceCode"/>
+<xs:element minOccurs="0" ref="serviceVersion"/>
+</xs:sequence>
+<xs:attribute ref="objectType" use="required"/>
+</xs:complexType>;
+```
 
 The enumeration XRoadObjectType lists all possible values of the objectType attribute.
 
+```xml
 &lt;xs:simpleType name="XRoadObjectType"&gt;
-
 &lt;xs:restriction base="xs:string"&gt;
-
 &lt;xs:enumeration value="MEMBER"/&gt;
-
 &lt;xs:enumeration value="SUBSYSTEM"/&gt;
-
 &lt;xs:enumeration value="SERVICE"/&gt;
-
 &lt;xs:enumeration value="CENTRALSERVICE"/&gt;
-
 &lt;/xs:restriction&gt;
-
 &lt;/xs:simpleType&gt;
+```
 
 Next, we define elements and attributes used in the XRoadIdentifierType.
 
