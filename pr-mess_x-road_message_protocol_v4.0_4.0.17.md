@@ -98,9 +98,7 @@ Engineering Task Force, 1997.
 
 <a name="Ref_SWAREF"></a>\[SWAREF\] Attachments Profile Version 1.0, 2004.
 
-<a name="Ref_SOAPFAULT"></a>\[SOAPFAULT\] [http://www.w3.org/TR/2000/NOTE-SOAP-20000508/#_Toc478383507](http://www.w3.org/TR/2000/NOTE-SOAP-20000508/#_Toc478383507).
-
-<a name="Ref_WRAPPED"></a>\[WRAPPED\] Usage of document/literal wrapped pattern in WSDL design. [http://www.ibm.com/developerworks/library/ws-usagewsdl/](http://www.ibm.com/developerworks/library/ws-usagewsdl/).
+<a name="Ref_WRAPPED"></a>\[WRAPPED\] Usage of document/literal wrapped pattern in WSDL design, [http://www.ibm.com/developerworks/library/ws-usagewsdl/](http://www.ibm.com/developerworks/library/ws-usagewsdl/).
 
 <a name="13-identifying-entities"></a>
 ### 1.3 Identifying Entities
@@ -298,7 +296,7 @@ Additionally, MTOM-encoded \[[MTOM](#Ref_MTOM)\] messages are supported in the s
 <a name="25-fault-messages"></a>
 ### 2.5 Fault Messages
 
-For technical errors the security server must return a SOAP Fault message \[[SOAPFAULT](#Ref_SOAPFAULT)\]. The SOAP Fault message contains the information about the error, such as error code, error message etc. The SOAP Fault MAY contain X-Road Headers and it MAY be described in the service WSDL.
+For technical errors the security server must return a SOAP Fault message \[[SOAP](#Ref_SOAP)\]. The SOAP Fault message contains the information about the error, such as error code, error message etc. The SOAP Fault MAY contain X-Road Headers and it MAY be described in the service WSDL.
 
 <a name="26-character-encoding"></a>
 ### 2.6 Character Encoding
