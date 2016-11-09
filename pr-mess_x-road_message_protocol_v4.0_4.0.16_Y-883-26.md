@@ -1,4 +1,4 @@
-#X-Road: Message Protocol v4.0
+# X-Road: Message Protocol v4.0
 **Technical Specification**    
 
 Version: 4.0.16               
@@ -23,7 +23,7 @@ Doc. ID: PR-MESS
 | 10.05.2016 | 4.0.15      | Added section about character encoding                                       | Kristo Heero       |
 | 16.05.2016 | 4.0.16      | Editorial changes made                                                       | Margus Freudenthal |
 
-##Table of Contents
+## Table of Contents
 
 [License](#license)
 
@@ -69,11 +69,11 @@ Doc. ID: PR-MESS
 
 [Annex G Example Request with MTOM Attachment 30](#_Toc451190016)
 
-##License
+## License
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
 
-##1 Introduction
+## 1 Introduction
 
 This specification describes the X-Road message protocol version 4.0. This protocol is used between information systems and security servers in the X-Road system. The protocol is implemented as a profile of the SOAP 1.1 protocol \[[SOAP](#Ref_SOAP)\]. Because this protocol inherits the general model, the transport mechanism, and the error handling mechanism of the base SOAP protocol, these issues are not discussed separately in this specification.
 
@@ -83,7 +83,7 @@ This specification does not include option for partially implementing the protoc
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document (in uppercase, as shown) are to be interpreted as described in \[[RFC2119](#Ref_RFC2119)\].
 
-##1.1 Terms and Abbreviations
+## 1.1 Terms and Abbreviations
 
 -   **X-Road member** – natural or legal person who uses functionality offered by X-Road
 
@@ -93,7 +93,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 -   **X-Road service** – SOAP-based web service that is offered by an X-Road member or by a subsystem and that can be used by other X-Road members or subsystems.
 
-##1.2 References
+## 1.2 References
 
 <a name="Ref_SOAP"></a>\[SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
 
