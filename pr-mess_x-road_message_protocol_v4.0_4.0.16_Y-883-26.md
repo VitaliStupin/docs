@@ -356,7 +356,7 @@ The traditional way of describing SOAP attachments in WSDL documents \[[WSDL](#R
 
 For example of swaRef and MTOM on-the-wire messages with attachments see [Annex F](#annex-f-example-request-with-attachment) and [Annex G](#annex-g-example-request-with-mtom-attachment) respectively. For both swaRef and MTOM service description WSDL examples see [Annex C](#annex-c-example-wsdl).
 
-Table 2 lists elements that can be added to a WSDL description to transfer information specific to X-Road. The namespace prefix `xrd` is bound to namespace "`http://x-road.eu/xsd/xroad.xsd`".
+Table 2 lists elements that can be added to a WSDL description to transfer information specific to X-Road. The namespace prefix `xrd` is bound to namespace `http://x-road.eu/xsd/xroad.xsd`.
 
 <a name="Ref_WSDL_elements_for_X_Road_services"></a>Table 2. WSDL elements for X-Road services
 
@@ -371,1251 +371,653 @@ Table 2 lists elements that can be added to a WSDL description to transfer infor
 <a name="annex-a-xml-schema-for-identifiers"></a>
 ## Annex A XML Schema for Identifiers
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;xs:schema elementFormDefault="qualified" jxb:version="2.1" targetNamespace="http://x-road.eu/xsd/identifiers" xmlns="http://x-road.eu/xsd/identifiers" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
-
-&lt;xs:complexType name="XRoadIdentifierType"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Globally unique identifier in the X-Road system. Identifier consists of object type specifier and list of hierarchical codes (starting with code that identifiers the X-Road instance).&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element minOccurs="0" ref="xRoadInstance"/&gt;
-
-&lt;xs:element minOccurs="0" ref="memberClass"/&gt;
-
-&lt;xs:element minOccurs="0" ref="memberCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="subsystemCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="groupCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="serviceCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="serviceVersion"/&gt;
-
-&lt;xs:element minOccurs="0" ref="securityCategoryCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="serverCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required"/&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:simpleType name="XRoadObjectType"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Enumeration for X-Road identifier types.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;xs:restriction base="xs:string"&gt;
-
-&lt;xs:enumeration value="MEMBER"/&gt;
-
-&lt;xs:enumeration value="SUBSYSTEM"/&gt;
-
-&lt;xs:enumeration value="SERVER"/&gt;
-
-&lt;xs:enumeration value="GLOBALGROUP"/&gt;
-
-&lt;xs:enumeration value="LOCALGROUP"/&gt;
-
-&lt;xs:enumeration value="SECURITYCATEGORY"/&gt;
-
-&lt;xs:enumeration value="SERVICE"/&gt;
-
-&lt;xs:enumeration value="CENTRALSERVICE"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:simpleType&gt;
-
-&lt;xs:element name="xRoadInstance" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Identifies the X-Road instance. This field is applicable to all identifier types.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="memberClass" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Type of the member (company, government institution, private person, etc.)&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="memberCode" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Code that uniquely identifies a member of given member type.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="subsystemCode" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Code that uniquely identifies a subsystem of given X-Road member.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="groupCode" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Code that uniquely identifies a global group in given X-Road instance.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="serviceCode" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Code that uniquely identifies a service offered by given X-Road member or subsystem.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="serviceVersion" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Version of the service.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="securityCategoryCode" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Code that uniquely identifies security category in a given X-Road instance.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="serverCode" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Code that uniquely identifies security server offered by a given X-Road member or subsystem.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:attribute name="objectType" type="XRoadObjectType"/&gt;
-
-&lt;xs:complexType name="XRoadClientIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="memberClass"/&gt;
-
-&lt;xs:element ref="memberCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="subsystemCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:complexType name="XRoadServiceIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="memberClass"/&gt;
-
-&lt;xs:element ref="memberCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="subsystemCode"/&gt;
-
-&lt;xs:element ref="serviceCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="serviceVersion"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required" fixed="SERVICE"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:complexType name="XRoadSecurityCategoryIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="securityCategoryCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required" fixed="SECURITYCATEGORY"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:complexType name="XRoadCentralServiceIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="serviceCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required" fixed="CENTRALSERVICE"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:complexType name="XRoadSecurityServerIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="memberClass"/&gt;
-
-&lt;xs:element ref="memberCode"/&gt;
-
-&lt;xs:element ref="serverCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required" fixed="SERVER"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:complexType name="XRoadGlobalGroupIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="groupCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required" fixed="GLOBALGROUP"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:complexType name="XRoadLocalGroupIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="groupCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;xs:attribute ref="objectType" use="required" fixed="LOCALGROUP"/&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:schema&gt;
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" jxb:version="2.1" targetNamespace="http://x-road.eu/xsd/identifiers" xmlns="http://x-road.eu/xsd/identifiers" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="XRoadIdentifierType">
+        <xs:annotation>
+            <xs:documentation>Globally unique identifier in the X-Road system. Identifier consists of object type specifier and list of hierarchical codes (starting with code that identifiers the X-Road instance).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="xRoadInstance"/>
+            <xs:element minOccurs="0" ref="memberClass"/>
+            <xs:element minOccurs="0" ref="memberCode"/>
+            <xs:element minOccurs="0" ref="subsystemCode"/>
+            <xs:element minOccurs="0" ref="groupCode"/>
+            <xs:element minOccurs="0" ref="serviceCode"/>
+            <xs:element minOccurs="0" ref="serviceVersion"/>
+            <xs:element minOccurs="0" ref="securityCategoryCode"/>
+            <xs:element minOccurs="0" ref="serverCode"/>
+        </xs:sequence>
+        <xs:attribute ref="objectType" use="required"/>
+    </xs:complexType>
+    <xs:simpleType name="XRoadObjectType">
+        <xs:annotation>
+            <xs:documentation>Enumeration for X-Road identifier types.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MEMBER"/>
+            <xs:enumeration value="SUBSYSTEM"/>
+            <xs:enumeration value="SERVER"/>
+            <xs:enumeration value="GLOBALGROUP"/>
+            <xs:enumeration value="LOCALGROUP"/>
+            <xs:enumeration value="SECURITYCATEGORY"/>
+            <xs:enumeration value="SERVICE"/>
+            <xs:enumeration value="CENTRALSERVICE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="xRoadInstance" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Identifies the X-Road instance. This field is applicable to all identifier types.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="memberClass" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Type of the member (company, government institution, private person, etc.)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="memberCode" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Code that uniquely identifies a member of given member type.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="subsystemCode" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Code that uniquely identifies a subsystem of given X-Road member.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="groupCode" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Code that uniquely identifies a global group in given X-Road instance.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="serviceCode" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Code that uniquely identifies a service offered by given X-Road member or subsystem.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="serviceVersion" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Version of the service.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="securityCategoryCode" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Code that uniquely identifies security category in a given X-Road instance.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="serverCode" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Code that uniquely identifies security server offered by a given X-Road member or subsystem.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:attribute name="objectType" type="XRoadObjectType"/>
+    <xs:complexType name="XRoadClientIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="memberClass"/>
+                    <xs:element ref="memberCode"/>
+                    <xs:element minOccurs="0" ref="subsystemCode"/>
+                </xs:sequence>
+                <xs:attribute ref="objectType" use="required"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="XRoadServiceIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="memberClass"/>
+                    <xs:element ref="memberCode"/>
+                    <xs:element minOccurs="0" ref="subsystemCode"/>
+                    <xs:element ref="serviceCode"/>
+                    <xs:element minOccurs="0" ref="serviceVersion"/>
+                </xs:sequence>
+                <xs:attribute ref="objectType" use="required" fixed="SERVICE"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="XRoadSecurityCategoryIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="securityCategoryCode"/>
+                </xs:sequence>
+                <xs:attribute ref="objectType" use="required" fixed="SECURITYCATEGORY"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="XRoadCentralServiceIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="serviceCode"/>
+                </xs:sequence>
+                <xs:attribute ref="objectType" use="required" fixed="CENTRALSERVICE"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="XRoadSecurityServerIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="memberClass"/>
+                    <xs:element ref="memberCode"/>
+                    <xs:element ref="serverCode"/>
+                </xs:sequence>
+                <xs:attribute ref="objectType" use="required" fixed="SERVER"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="XRoadGlobalGroupIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="groupCode"/>
+                </xs:sequence>
+                <xs:attribute ref="objectType" use="required" fixed="GLOBALGROUP"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="XRoadLocalGroupIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="groupCode"/>
+                </xs:sequence>
+                <xs:attribute ref="objectType" use="required" fixed="LOCALGROUP"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
+```
 
 <a name="annex-b-xml-schema-for-mMessages"></a>
 ## Annex B XML Schema for Messages
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;xs:schema elementFormDefault="qualified"
-
-targetNamespace="http://x-road.eu/xsd/xroad.xsd"
-
-xmlns="http://x-road.eu/xsd/xroad.xsd"
-
-xmlns:id="http://x-road.eu/xsd/identifiers"
-
-xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
-
-&lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
-
-schemaLocation="http://www.w3.org/2009/01/xml.xsd"/&gt;
-
-&lt;xs:import id="id" namespace="http://x-road.eu/xsd/identifiers"
-
-schemaLocation="http://x-road.eu/xsd/identifiers.xsd"/&gt;
-
-&lt;!-- Header elements --&gt;
-
-&lt;xs:element name="client" type="id:XRoadClientIdentifierType"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Identies service client&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="service" type="id:XRoadServiceIdentifierType"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Identies the service
-
-that is invoked by the request&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="centralService"
-
-type="id:XRoadCentralServiceIdentifierType"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Identies the central service
-
-that is invoked by the request.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="id" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Unique identier
-
-for this message&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="userId" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;User whose action initiated
-
-the request&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="requestHash"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Base64 encoded hash of
-
-the SOAP request message&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:simpleContent&gt;
-
-&lt;xs:extension base="xs:string"&gt;
-
-&lt;xs:attribute name="algorithmId" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Identies hash algorithm
-
-that was used to calculate the value
-
-of the requestHash field.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:attribute&gt;
-
-&lt;/xs:extension&gt;
-
-&lt;/xs:simpleContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="issue" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Identies received application, issue or document
-
-that was the cause of the service request.&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="protocolVersion" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;X-Road message protocol version&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;!-- Elements describing other elements and operations--&gt;
-
-&lt;xs:element name="version" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Version of the service&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="title"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Title of the service&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:simpleContent&gt;
-
-&lt;xs:extension base="xs:string"&gt;
-
-&lt;xs:attribute default="en" ref="xml:lang"/&gt;
-
-&lt;/xs:extension&gt;
-
-&lt;/xs:simpleContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="notes"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Notes for user&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:simpleContent&gt;
-
-&lt;xs:extension base="xs:string"&gt;
-
-&lt;xs:attribute ref="xml:lang" default="en" /&gt;
-
-&lt;/xs:extension&gt;
-
-&lt;/xs:simpleContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="techNotes"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:documentation&gt;Notes for technical stuff&lt;/xs:documentation&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:simpleContent&gt;
-
-&lt;xs:extension base="xs:string"&gt;
-
-&lt;xs:attribute ref="xml:lang" default="en" /&gt;
-
-&lt;/xs:extension&gt;
-
-&lt;/xs:simpleContent&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;/xs:schema&gt;
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+        targetNamespace="http://x-road.eu/xsd/xroad.xsd"
+        xmlns="http://x-road.eu/xsd/xroad.xsd"
+        xmlns:id="http://x-road.eu/xsd/identifiers"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+            schemaLocation="http://www.w3.org/2009/01/xml.xsd"/> 
+    <xs:import id="id" namespace="http://x-road.eu/xsd/identifiers"
+            schemaLocation="http://x-road.eu/xsd/identifiers.xsd"/>
+
+    <!-- Header elements -->
+    <xs:element name="client" type="id:XRoadClientIdentifierType">
+        <xs:annotation>
+            <xs:documentation>Identies service client</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="service" type="id:XRoadServiceIdentifierType">
+        <xs:annotation>
+            <xs:documentation>Identies the service
+                that is invoked by the request</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="centralService"
+            type="id:XRoadCentralServiceIdentifierType">
+        <xs:annotation>
+            <xs:documentation>Identies the central service
+                that is invoked by the request.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Unique identier
+                for this message</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="userId" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>User whose action initiated
+                the request</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="requestHash">
+        <xs:annotation>
+            <xs:documentation>Base64 encoded hash of
+                the SOAP request message</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="algorithmId" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Identies hash algorithm
+                                that was used to calculate the value
+                                of the requestHash field.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="issue" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Identies received application, issue or document
+                that was the cause of the service request.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="protocolVersion" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>X-Road message protocol version</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <!-- Elements describing other elements and operations-->
+    <xs:element name="version" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Version of the service</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="title">
+        <xs:annotation>
+            <xs:documentation>Title of the service</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute default="en" ref="xml:lang"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="notes">
+        <xs:annotation>
+            <xs:documentation>Notes for user</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" default="en" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="techNotes">
+        <xs:annotation>
+            <xs:documentation>Notes for technical stuff</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" default="en" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+```
 
 <a name="annex-c-example-wsdl"></a>
 ## Annex C Example WSDL
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;wsdl:definitions targetNamespace="http://producer.x-road.eu"
-
-xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-
-xmlns:tns="http://producer.x-road.eu"
-
-xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
-
-xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
-
-xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
-
-xmlns:ref="http://ws-i.org/profiles/basic/1.1/xsd"
-
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
-
-xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"&gt;
-
-&lt;wsdl:types&gt;
-
-&lt;xs:schema targetNamespace="http://producer.x-road.eu"
-
-xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
-
-&lt;xs:import namespace="http://x-road.eu/xsd/xroad.xsd"
-
-schemaLocation="http://x-road.eu/xsd/xroad.xsd" /&gt;
-
-&lt;xs:import namespace="http://ws-i.org/profiles/basic/1.1/xsd"
-
-schemaLocation="http://ws-i.org/profiles/basic/1.1/swaref.xsd" /&gt;
-
-&lt;xs:import namespace="http://www.w3.org/2005/05/xmlmime"
-
-schemaLocation="http://www.w3.org/2005/05/xmlmime" /&gt;
-
-&lt;xs:complexType name="fault"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element name="faultCode" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Fault Code&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="faultString" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Fault explanation&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;xs:element name="exampleService"&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element name="exampleInput" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example input&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="exampleServiceResponse"&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element name="exampleOutput" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example output&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="fault" type="tns:fault"
-
-minOccurs="0" /&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="exampleServiceSwaRef"&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element name="exampleInput" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example input&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="exampleAttachment" type="ref:swaRef"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example Attachment (with swaRef
-
-description)&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="exampleServiceSwaRefResponse"&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element name="exampleOutput" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example output&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="fault" type="tns:fault"
-
-minOccurs="0" /&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="exampleServiceMtom"&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element name="exampleInput" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example input&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="exampleAttachment"
-
-type="xs:base64Binary"
-
-xmime:expectedContentTypes="application/octet-stream"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example MTOM
-
-Attachment&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="exampleServiceMtomResponse"&gt;
-
-&lt;xs:complexType&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element name="exampleOutput" type="xs:string"&gt;
-
-&lt;xs:annotation&gt;
-
-&lt;xs:appinfo&gt;
-
-&lt;xrd:title&gt;Example output&lt;/xrd:title&gt;
-
-&lt;/xs:appinfo&gt;
-
-&lt;/xs:annotation&gt;
-
-&lt;/xs:element&gt;
-
-&lt;xs:element name="fault" type="tns:fault"
-
-minOccurs="0" /&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt;
-
-&lt;/xs:schema&gt;
-
-&lt;/wsdl:types&gt;
-
-&lt;wsdl:message name="exampleService"&gt;
-
-&lt;wsdl:part name="exampleService" element="tns:exampleService" /&gt;
-
-&lt;/wsdl:message&gt;
-
-&lt;wsdl:message name="exampleServiceResponse"&gt;
-
-&lt;wsdl:part name="exampleServiceResponse"
-
-element="tns:exampleServiceResponse" /&gt;
-
-&lt;/wsdl:message&gt;
-
-&lt;wsdl:message name="exampleServiceSwaRef"&gt;
-
-&lt;wsdl:part name="exampleServiceSwaRef"
-
-element="tns:exampleServiceSwaRef" /&gt;
-
-&lt;/wsdl:message&gt;
-
-&lt;wsdl:message name="exampleServiceSwaRefResponse"&gt;
-
-&lt;wsdl:part name="exampleServiceSwaRefResponse"
-
-element="tns:exampleServiceSwaRefResponse" /&gt;
-
-&lt;/wsdl:message&gt;
-
-&lt;wsdl:message name="exampleServiceMtom"&gt;
-
-&lt;wsdl:part name="exampleServiceMtom"
-
-element="tns:exampleServiceMtom" /&gt;
-
-&lt;/wsdl:message&gt;
-
-&lt;wsdl:message name="exampleServiceMtomResponse"&gt;
-
-&lt;wsdl:part name="exampleServiceMtomResponse"
-
-element="tns:exampleServiceMtomResponse" /&gt;
-
-&lt;/wsdl:message&gt;
-
-&lt;wsdl:message name="requestHeader"&gt;
-
-&lt;wsdl:part name="client" element="xrd:client" /&gt;
-
-&lt;wsdl:part name="service" element="xrd:service" /&gt;
-
-&lt;wsdl:part name="id" element="xrd:id" /&gt;
-
-&lt;wsdl:part name="userId" element="xrd:userId" /&gt;
-
-&lt;wsdl:part name="issue" element="xrd:issue" /&gt;
-
-&lt;wsdl:part name="protocolVersion" element="xrd:protocolVersion" /&gt;
-
-&lt;/wsdl:message&gt;
-
-&lt;wsdl:portType name="exampleServicePort"&gt;
-
-&lt;wsdl:operation name="exampleService"&gt;
-
-&lt;wsdl:documentation&gt;
-
-&lt;xrd:title&gt;Title of exampleService&lt;/xrd:title&gt;
-
-&lt;xrd:notes&gt;Technical notes for exampleService:
-
-This is a simple SOAP service.&lt;/xrd:notes&gt;
-
-&lt;/wsdl:documentation&gt;
-
-&lt;wsdl:input name="exampleService" message="tns:exampleService" /&gt;
-
-&lt;wsdl:output name="exampleServiceResponse"
-
-message="tns:exampleServiceResponse" /&gt;
-
-&lt;/wsdl:operation&gt;
-
-&lt;wsdl:operation name="exampleServiceSwaRef"&gt;
-
-&lt;wsdl:documentation&gt;
-
-&lt;xrd:title&gt;Title of exampleServiceSwaRef&lt;/xrd:title&gt;
-
-&lt;xrd:notes&gt;Technical notes for exampleServiceSwaRef:
-
-This is a SOAP service with
-
-swaRef attachment.&lt;/xrd:notes&gt;
-
-&lt;/wsdl:documentation&gt;
-
-&lt;wsdl:input name="exampleServiceSwaRef"
-
-message="tns:exampleServiceSwaRef" /&gt;
-
-&lt;wsdl:output name="exampleServiceSwaRefResponse"
-
-message="tns:exampleServiceSwaRefResponse" /&gt;
-
-&lt;/wsdl:operation&gt;
-
-&lt;wsdl:operation name="exampleServiceMtom"&gt;
-
-&lt;wsdl:documentation&gt;
-
-&lt;xrd:title&gt;Title of exampleServiceMtom&lt;/xrd:title&gt;
-
-&lt;xrd:notes&gt;Technical notes for exampleServiceMtom:
-
-This is a SOAP service with
-
-MTOM attachment.&lt;/xrd:notes&gt;
-
-&lt;/wsdl:documentation&gt;
-
-&lt;wsdl:input name="exampleServiceMtom"
-
-message="tns:exampleServiceMtom" /&gt;
-
-&lt;wsdl:output name="exampleServiceMtomResponse"
-
-message="tns:exampleServiceMtomResponse" /&gt;
-
-&lt;/wsdl:operation&gt;
-
-&lt;/wsdl:portType&gt;
-
-&lt;wsdl:binding name="exampleServicePortSoap11"
-
-type="tns:exampleServicePort"&gt;
-
-&lt;soap:binding style="document"
-
-transport="http://schemas.xmlsoap.org/soap/http" /&gt;
-
-&lt;wsdl:operation name="exampleService"&gt;
-
-&lt;soap:operation soapAction="" style="document" /&gt;
-
-&lt;xrd:version&gt;v1&lt;/xrd:version&gt;
-
-&lt;wsdl:input name="exampleService"&gt;
-
-&lt;soap:body use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="client" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="service" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="id" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="userId" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="issue" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="protocolVersion" use="literal"/&gt;
-
-&lt;/wsdl:input&gt;
-
-&lt;wsdl:output name="exampleServiceResponse"&gt;
-
-&lt;soap:body use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="client" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="service" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="id" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="userId" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="issue" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="protocolVersion" use="literal" /&gt;
-
-&lt;/wsdl:output&gt;
-
-&lt;/wsdl:operation&gt;
-
-&lt;wsdl:operation name="exampleServiceSwaRef"&gt;
-
-&lt;soap:operation soapAction="" style="document" /&gt;
-
-&lt;xrd:version&gt;v1&lt;/xrd:version&gt;
-
-&lt;wsdl:input&gt;
-
-&lt;!-- MIME description is required according to WS-I Attachments
-
-Profile Version 1.0: R2902 A SENDER MUST NOT send a
-
-message using SOAP with Attachments if the corresponding
-
-wsdl:input or wsdl:output element in the wsdl:binding does
-
-not specify the WSDL MIME Binding.
-
-The WSDL 1.1 specification does not specify whether the
-
-soap:header element is permitted as a child of the
-
-mime:part element along with the soap:body element. But
-
-WS-I Attachments Profile Version 1.0 recommends including
-
-both soap:header and soap:body as a content of mime:part.
-
-However it should be noted that some tools like for
-
-example SoapUI and Eclipse Web Services Explorer assume
-
-that soap:header elements are children of wsdl:input or
-
-wsdl:output elements. --&gt;
-
-&lt;mime:multipartRelated&gt;
-
-&lt;mime:part&gt;
-
-&lt;soap:body use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="client" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="service" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="id" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="userId" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="issue" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="protocolVersion" use="literal" /&gt;
-
-&lt;/mime:part&gt;
-
-&lt;/mime:multipartRelated&gt;
-
-&lt;/wsdl:input&gt;
-
-&lt;wsdl:output&gt;
-
-&lt;soap:body use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="client" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="service" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="id" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="userId" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="issue" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="protocolVersion" use="literal" /&gt;
-
-&lt;/wsdl:output&gt;
-
-&lt;/wsdl:operation&gt;
-
-&lt;wsdl:operation name="exampleServiceMtom"&gt;
-
-&lt;soap:operation soapAction="" style="document" /&gt;
-
-&lt;xrd:version&gt;v1&lt;/xrd:version&gt;
-
-&lt;wsdl:input&gt;
-
-&lt;!-- MTOM does not require MIME description --&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="client" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="service" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="id" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="userId" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="issue" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="protocolVersion" use="literal" /&gt;
-
-&lt;soap:body use="literal" /&gt;
-
-&lt;/wsdl:input&gt;
-
-&lt;wsdl:output&gt;
-
-&lt;soap:body use="literal"/&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="client" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="service" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="id" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="userId" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="issue" use="literal" /&gt;
-
-&lt;soap:header message="tns:requestHeader"
-
-part="protocolVersion" use="literal" /&gt;
-
-&lt;/wsdl:output&gt;
-
-&lt;/wsdl:operation&gt;
-
-&lt;/wsdl:binding&gt;
-
-&lt;wsdl:service name="producerPortService"&gt;
-
-&lt;wsdl:port name="exampleServicePortSoap11"
-
-binding="tns:exampleServicePortSoap11"&gt;
-
-&lt;soap:address location="http://foo.bar.baz" /&gt;
-
-&lt;/wsdl:port&gt;
-
-&lt;/wsdl:service&gt;
-
-&lt;/wsdl:definitions&gt;
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://producer.x-road.eu"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://producer.x-road.eu"
+        xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
+        xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+        xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+        xmlns:ref="http://ws-i.org/profiles/basic/1.1/xsd"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types>
+        <xs:schema targetNamespace="http://producer.x-road.eu"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import namespace="http://x-road.eu/xsd/xroad.xsd"
+                    schemaLocation="http://x-road.eu/xsd/xroad.xsd" />
+            <xs:import namespace="http://ws-i.org/profiles/basic/1.1/xsd"
+                    schemaLocation="http://ws-i.org/profiles/basic/1.1/swaref.xsd" />
+            <xs:import namespace="http://www.w3.org/2005/05/xmlmime"
+                    schemaLocation="http://www.w3.org/2005/05/xmlmime" />
+            <xs:complexType name="fault">
+                <xs:sequence>
+                    <xs:element name="faultCode" type="xs:string">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <xrd:title>Fault Code</xrd:title>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="faultString" type="xs:string">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <xrd:title>Fault explanation</xrd:title>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="exampleService">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="exampleInput" type="xs:string">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example input</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exampleServiceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="exampleOutput" type="xs:string">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example output</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="fault" type="tns:fault"
+                                minOccurs="0" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exampleServiceSwaRef">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="exampleInput" type="xs:string">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example input</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="exampleAttachment" type="ref:swaRef">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example Attachment (with swaRef
+                                            description)</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exampleServiceSwaRefResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="exampleOutput" type="xs:string">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example output</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="fault" type="tns:fault"
+                                minOccurs="0" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exampleServiceMtom">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="exampleInput" type="xs:string">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example input</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="exampleAttachment"
+                                type="xs:base64Binary"
+                                xmime:expectedContentTypes="application/octet-stream">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example MTOM
+                                            Attachment</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exampleServiceMtomResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="exampleOutput" type="xs:string">
+                            <xs:annotation>
+                                <xs:appinfo>
+                                    <xrd:title>Example output</xrd:title>
+                                </xs:appinfo>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="fault" type="tns:fault"
+                                minOccurs="0" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="exampleService">
+        <wsdl:part name="exampleService" element="tns:exampleService" />
+    </wsdl:message>
+    <wsdl:message name="exampleServiceResponse">
+        <wsdl:part name="exampleServiceResponse"
+                element="tns:exampleServiceResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="exampleServiceSwaRef">
+        <wsdl:part name="exampleServiceSwaRef"
+                element="tns:exampleServiceSwaRef" />
+    </wsdl:message>
+    <wsdl:message name="exampleServiceSwaRefResponse">
+        <wsdl:part name="exampleServiceSwaRefResponse"
+                element="tns:exampleServiceSwaRefResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="exampleServiceMtom">
+        <wsdl:part name="exampleServiceMtom"
+                element="tns:exampleServiceMtom" />
+    </wsdl:message>
+    <wsdl:message name="exampleServiceMtomResponse">
+        <wsdl:part name="exampleServiceMtomResponse"
+                element="tns:exampleServiceMtomResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="requestHeader">
+        <wsdl:part name="client" element="xrd:client" />
+        <wsdl:part name="service" element="xrd:service" />
+        <wsdl:part name="id" element="xrd:id" />
+        <wsdl:part name="userId" element="xrd:userId" />
+        <wsdl:part name="issue" element="xrd:issue" />
+        <wsdl:part name="protocolVersion" element="xrd:protocolVersion" />
+    </wsdl:message>
+
+    <wsdl:portType name="exampleServicePort">
+        <wsdl:operation name="exampleService">
+            <wsdl:documentation>
+                <xrd:title>Title of exampleService</xrd:title>
+                <xrd:notes>Technical notes for exampleService:
+                        This is a simple SOAP service.</xrd:notes>
+            </wsdl:documentation>
+            <wsdl:input name="exampleService" message="tns:exampleService" />
+            <wsdl:output name="exampleServiceResponse"
+                    message="tns:exampleServiceResponse" />
+        </wsdl:operation>
+
+        <wsdl:operation name="exampleServiceSwaRef">
+            <wsdl:documentation>
+                <xrd:title>Title of exampleServiceSwaRef</xrd:title>
+                <xrd:notes>Technical notes for exampleServiceSwaRef:
+                        This is a SOAP service with
+                        swaRef attachment.</xrd:notes>
+            </wsdl:documentation>
+            <wsdl:input name="exampleServiceSwaRef"
+                    message="tns:exampleServiceSwaRef" />
+            <wsdl:output name="exampleServiceSwaRefResponse"
+                    message="tns:exampleServiceSwaRefResponse" />
+        </wsdl:operation>
+
+        <wsdl:operation name="exampleServiceMtom">
+            <wsdl:documentation>
+                <xrd:title>Title of exampleServiceMtom</xrd:title>
+                <xrd:notes>Technical notes for exampleServiceMtom:
+                        This is a SOAP service with
+                        MTOM attachment.</xrd:notes>
+            </wsdl:documentation>
+            <wsdl:input name="exampleServiceMtom"
+                    message="tns:exampleServiceMtom" />
+            <wsdl:output name="exampleServiceMtomResponse"
+                    message="tns:exampleServiceMtomResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="exampleServicePortSoap11"
+            type="tns:exampleServicePort">
+        <soap:binding style="document"
+                transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="exampleService">
+            <soap:operation soapAction="" style="document" />
+            <xrd:version>v1</xrd:version>
+            <wsdl:input name="exampleService">
+                <soap:body use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="client" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="service" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="id" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="userId" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="issue" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="protocolVersion" use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="exampleServiceResponse">
+                <soap:body use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="client" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="service" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="id" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="userId" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="issue" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="protocolVersion" use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="exampleServiceSwaRef">
+            <soap:operation soapAction="" style="document" />
+            <xrd:version>v1</xrd:version>
+            <wsdl:input>
+                <!-- MIME description is required according to WS-I Attachments
+                     Profile Version 1.0: R2902 A SENDER MUST NOT send a
+                     message using SOAP with Attachments if the corresponding
+                     wsdl:input or wsdl:output element in the wsdl:binding does
+                     not specify the WSDL MIME Binding.
+                     
+                     The WSDL 1.1 specification does not specify whether the
+                     soap:header element is permitted as a child of the
+                     mime:part element along with the soap:body element. But
+                     WS-I Attachments Profile Version 1.0 recommends including
+                     both soap:header and soap:body as a content of mime:part.
+                     However it should be noted that some tools like for
+                     example SoapUI and Eclipse Web Services Explorer assume
+                     that soap:header elements are children of wsdl:input or
+                     wsdl:output elements. -->
+                <mime:multipartRelated>
+                    <mime:part>
+                        <soap:body use="literal" />
+                        <soap:header message="tns:requestHeader"
+                                part="client" use="literal" />
+                        <soap:header message="tns:requestHeader"
+                                part="service" use="literal" />
+                        <soap:header message="tns:requestHeader"
+                                part="id" use="literal" />
+                        <soap:header message="tns:requestHeader"
+                                part="userId" use="literal" />
+                        <soap:header message="tns:requestHeader"
+                                part="issue" use="literal" />
+                        <soap:header message="tns:requestHeader"
+                                part="protocolVersion" use="literal" />
+                    </mime:part>
+                </mime:multipartRelated>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="client" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="service" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="id" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="userId" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="issue" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="protocolVersion" use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="exampleServiceMtom">
+            <soap:operation soapAction="" style="document" />
+            <xrd:version>v1</xrd:version>
+            <wsdl:input>
+                <!-- MTOM does not require MIME description -->
+                <soap:header message="tns:requestHeader"
+                        part="client" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="service" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="id" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="userId" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="issue" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="protocolVersion" use="literal" />
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+                <soap:header message="tns:requestHeader"
+                        part="client" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="service" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="id" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="userId" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="issue" use="literal" />
+                <soap:header message="tns:requestHeader"
+                        part="protocolVersion" use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="producerPortService">
+        <wsdl:port name="exampleServicePortSoap11"
+                binding="tns:exampleServicePortSoap11">
+            <soap:address location="http://foo.bar.baz" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
+```
 
 <a name="annex-d-example-fault-messages"></a>
 ## Annex D Example Fault Messages
