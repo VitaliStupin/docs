@@ -133,142 +133,109 @@ The messages in this protocol are based on SOAP 1.1 format \[SOAP\].
 <a name="21-identifiers"></a>
 ### 2.1 Identifiers
 
-This section describes XML-based data formats for expressing the identifiers described informally in Section 1.3 . The data structures and elements defined in this section will be located under namespace http://x-road.eu/xsd/identifiers. The complete XML Schema is shown in Annex A .
+This section describes XML-based data formats for expressing the identifiers described informally in Section 1.3 . The data structures and elements defined in this section will be located under namespace ```http://x-road.eu/xsd/identifiers```. The complete XML Schema is shown in [Annex A](#annex-a-xml-schema-for-identifiers).
 
 The following listing shows the header of the schema definition.
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-
-elementFormDefault="qualified"
-
-targetNamespace="http://x-road.eu/xsd/identifiers"
-
-xmlns="http://x-road.eu/xsd/identifiers"&gt;
-
-The XRoadIdentifierType complex type serves as the base for all other identifier types (derived by restriction). It contains a union of all fields that can be present in different identifiers. The attribute objectType contains the type of the identifier and can be used, for example, to distinguish between X-Road member and subsystem identifiers without resorting to conditions that check for presence of individual fields.
-
 ```xml
-<xs:complexType name="XRoadIdentifierType">
-<xs:sequence>
-<xs:element minOccurs="0" ref="xRoadInstance"/>
-<xs:element minOccurs="0" ref="memberClass"/>
-<xs:element minOccurs="0" ref="memberCode"/>
-<xs:element minOccurs="0" ref="subsystemCode"/>
-<xs:element minOccurs="0" ref="serviceCode"/>
-<xs:element minOccurs="0" ref="serviceVersion"/>
-</xs:sequence>
-<xs:attribute ref="objectType" use="required"/>
-</xs:complexType>;
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    targetNamespace="http://x-road.eu/xsd/identifiers"
+    xmlns="http://x-road.eu/xsd/identifiers">
 ```
 
-The enumeration XRoadObjectType lists all possible values of the objectType attribute.
+The ```XRoadIdentifierType``` complex type serves as the base for all other identifier types (derived by restriction). It contains a union of all fields that can be present in different identifiers. The attribute ```objectType``` contains the type of the identifier and can be used, for example, to distinguish between X-Road member and subsystem identifiers without resorting to conditions that check for presence of individual fields.
 
 ```xml
-&lt;xs:simpleType name="XRoadObjectType"&gt;
-&lt;xs:restriction base="xs:string"&gt;
-&lt;xs:enumeration value="MEMBER"/&gt;
-&lt;xs:enumeration value="SUBSYSTEM"/&gt;
-&lt;xs:enumeration value="SERVICE"/&gt;
-&lt;xs:enumeration value="CENTRALSERVICE"/&gt;
-&lt;/xs:restriction&gt;
-&lt;/xs:simpleType&gt;
+    <xs:complexType name="XRoadIdentifierType">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="xRoadInstance"/>
+            <xs:element minOccurs="0" ref="memberClass"/>
+            <xs:element minOccurs="0" ref="memberCode"/>
+            <xs:element minOccurs="0" ref="subsystemCode"/>
+            <xs:element minOccurs="0" ref="serviceCode"/>
+            <xs:element minOccurs="0" ref="serviceVersion"/>
+        </xs:sequence>
+        <xs:attribute ref="objectType" use="required"/>
+    </xs:complexType>
 ```
 
-Next, we define elements and attributes used in the XRoadIdentifierType.
+The enumeration ```XRoadObjectType``` lists all possible values of the ```objectType``` attribute.
 
-&lt;xs:element name="xRoadInstance" type="xs:string"/&gt;
+```xml
+    <xs:simpleType name="XRoadObjectType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MEMBER"/>
+            <xs:enumeration value="SUBSYSTEM"/>
+            <xs:enumeration value="SERVICE"/>
+            <xs:enumeration value="CENTRALSERVICE"/>
+        </xs:restriction>
+    </xs:simpleType>
+```
 
-&lt;xs:element name="memberClass" type="xs:string"/&gt;
+Next, we define elements and attributes used in the ```XRoadIdentifierType```.
 
-&lt;xs:element name="memberCode" type="xs:string"/&gt;
+```xml
+    <xs:element name="xRoadInstance" type="xs:string"/>
+    <xs:element name="memberClass" type="xs:string"/>
+    <xs:element name="memberCode" type="xs:string"/>
+    <xs:element name="subsystemCode" type="xs:string"/>
+    <xs:element name="serviceCode" type="xs:string"/>
+    <xs:element name="serviceVersion" type="xs:string"/>
+    <xs:attribute name="objectType" type="XRoadObjectType"/>
+```
 
-&lt;xs:element name="subsystemCode" type="xs:string"/&gt;
+Finally, we define complex types for representing concrete types of identifiers. First, the ```XRoadClientIdentifierType``` is used to represent identifiers that can be used by the service clients, namely X-Road members and subsystems.
 
-&lt;xs:element name="serviceCode" type="xs:string"/&gt;
+```xml
+    <xs:complexType name="XRoadClientIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="memberClass"/>
+                    <xs:element ref="memberCode"/>
+                    <xs:element minOccurs="0" ref="subsystemCode"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+```
 
-&lt;xs:element name="serviceVersion" type="xs:string"/&gt;
+The ```XRoadServiceIdentifierType``` can be used to represent identifiers of services.
 
-&lt;xs:attribute name="objectType" type="XRoadObjectType"/&gt;
+```xml
+    <xs:complexType name="XRoadServiceIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="memberClass"/>
+                    <xs:element ref="memberCode"/>
+                    <xs:element minOccurs="0" ref="subsystemCode"/>
+                    <xs:element ref="serviceCode"/>
+                    <xs:element minOccurs="0" ref="serviceVersion"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+```
 
-Finally, we define complex types for representing concrete types of identifiers. First, the XRoadClientIdentifierType is used to represent identifiers that can be used by the service clients, namely X-Road members and subsystems.
+The ```XRoadCentralServiceIdentifierType``` can be used to represent identifiers of central services.
 
-&lt;xs:complexType name="XRoadClientIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="memberClass"/&gt;
-
-&lt;xs:element ref="memberCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="subsystemCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-The XRoadServiceIdentifierType can be used to represent identifiers of services.
-
-&lt;xs:complexType name="XRoadServiceIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="memberClass"/&gt;
-
-&lt;xs:element ref="memberCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="subsystemCode"/&gt;
-
-&lt;xs:element ref="serviceCode"/&gt;
-
-&lt;xs:element minOccurs="0" ref="serviceVersion"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
-
-The XRoadCentralServiceIdentifierType can be used to represent identifiers of central services.
-
-&lt;xs:complexType name="XRoadCentralServiceIdentifierType"&gt;
-
-&lt;xs:complexContent&gt;
-
-&lt;xs:restriction base="XRoadIdentifierType"&gt;
-
-&lt;xs:sequence&gt;
-
-&lt;xs:element ref="xRoadInstance"/&gt;
-
-&lt;xs:element ref="serviceCode"/&gt;
-
-&lt;/xs:sequence&gt;
-
-&lt;/xs:restriction&gt;
-
-&lt;/xs:complexContent&gt;
-
-&lt;/xs:complexType&gt;
+```xml
+    <xs:complexType name="XRoadCentralServiceIdentifierType">
+        <xs:complexContent>
+            <xs:restriction base="XRoadIdentifierType">
+                <xs:sequence>
+                    <xs:element ref="xRoadInstance"/>
+                    <xs:element ref="serviceCode"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+```
 
 <a name="22-message-headers"></a>
 ### 2.2 Message Headers
@@ -277,9 +244,8 @@ This section describes additional SOAP headers that are used by the X-Road syste
 
 Table <span id="Ref_Supported_header_fields" class="anchor"></span>1. Supported header fields
 
-|                 |                                   |                        |                                                                                                                                                                                                                          |
+| Field           | Type                              | Mandatory/Optional     | Description                                                                                                                                                                                                               |
 |-----------------|-----------------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Field**       | **Type**                          | **Mandatory/Optional** | **Description**                                                                                                                                                                                                          |
 | client          | XRoadClientIdentifierType         | M                      | Identifies a service client – an entity that initiates the service call.                                                                                                                                                 |
 | service         | XRoadServiceIdentifierType        | O                      | Identifies the service that is invoked by the request.                                                                                                                                                                   |
 | centralService  | XRoadCentralServiceIdentifierType | O                      | Identifies the central service that is invoked by the request.                                                                                                                                                           |
