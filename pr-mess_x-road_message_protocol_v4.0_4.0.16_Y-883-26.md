@@ -1,17 +1,14 @@
 #X-Road: Message Protocol v4.0
                                 
- **Technical Specification**    
- Version: 4.0.16               
-                                
- 16.05.2016                     
-                                
- 30 pages                       
-                                
- Doc. ID: PR-MESS               
+**Technical Specification**    
+Version: 4.0.16               
 
-|            |             |                                                                              |                    |
+16.05.2016                     
+30 pages                       
+Doc. ID: PR-MESS               
+
+| Date       | Version     | Description                                                                  | Author             |
 |------------|-------------|------------------------------------------------------------------------------|--------------------|
-| **Date**   | **Version** | **Description**                                                              | **Author**         |
 | 04.09.2015 | 4.0.2       | Converted to ODT                                                             | Siim Annuk         |
 | 08.09.2015 | 4.0.3       | Minor fixes                                                                  | Siim Annuk         |
 | 10.09.2015 | 4.0.4       | Fixed some typos                                                             | Siim Annuk         |
@@ -30,7 +27,7 @@
 
 ##Table of Contents
 
-[License 4](#_Toc451189995)
+[License](#reflicense)
 
 [1 Introduction 5](#_Toc451189996)
 
@@ -74,8 +71,8 @@
 
 [Annex G Example Request with MTOM Attachment 30](#_Toc451190016)
 
-<span id="__RefHeading__7792_1358676947" class="anchor"><span id="_Toc451189995" class="anchor"></span></span>License
-=====================================================================================================================
+<a name="reflicense"></a>
+##License
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
 
