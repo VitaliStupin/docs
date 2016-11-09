@@ -100,6 +100,8 @@ Engineering Task Force, 1997.
 
 <a name="Ref_SOAPFAULT"></a>\[SOAPFAULT\] [http://www.w3.org/TR/2000/NOTE-SOAP-20000508/#_Toc478383507](http://www.w3.org/TR/2000/NOTE-SOAP-20000508/#_Toc478383507).
 
+<a name="Ref_WSDLRULES"></a>\[WSDLRULES\] Rules for document/literal – Wrapped pattern style of SOAP messaging. [http://www.ibm.com/developerworks/library/ws-usagewsdl/](http://www.ibm.com/developerworks/library/ws-usagewsdl/).
+
 <a name="13-identifying-entities"></a>
 ### 1.3 Identifying Entities
 
@@ -313,7 +315,7 @@ With UTF-8 encoding BOM (Byte Order Mark) bytes MAY be used in the beginning of 
 <a name="31-general"></a>
 ### 3.1 General
 
-Services are described using the Web Services Description Language (WSDL) 1.1 \[WSDL\].
+Services are described using the Web Services Description Language (WSDL) 1.1 \[[WSDL](#Ref_WSDL)\].
 
 X-Road supports versioned services. Different versions of the service represent minor technical changes in the service description. For example, a new version must be created when restructuring the service description (e.g., renaming or refactoring types in the XML Schema) or when changing types or names of fields. However, when the service semantics or data content of messages changes, a new service with a new code must be created.
 
@@ -321,11 +323,10 @@ In the context of service provision contracts, services are considered without v
 
 <a name="32-describing-services-with-wsdl"></a>
 ### 3.2 Describing Services with WSDL
--------------------------------------------------------------------------------------------------------------------------------------------
 
 Service descriptions are written in the WSDL language, subject to the following restrictions and extensions.
 
-The combination of WSDL binding style/use MUST be document/literal (binding *style=”document”; use=”literal”*). The WSDL must conform to the following rules[2]:
+The combination of WSDL binding style/use MUST be wrapped-document/literal (binding *style=”document”; use=”literal”*). The WSDL must conform to the following rules \[[WSDLRULES](Ref_WSDLRULES)\]:
 
 1.  *“**Only 'One' Part Definition in the Input & Output Messages in WSDL**
     'Wrapped' is a form of document/literal. When defining a WS-I compliant document/literal service, there can be at most one body part in your input message and at most one body part in your output message. You do \*not\* define each method parameter as a separate part in the message definition. (The parameters are defined in the WSDL 'types' section, instead).”*
