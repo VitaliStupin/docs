@@ -296,7 +296,7 @@ Additionally, MTOM-encoded \[[MTOM](#Ref_MTOM)\] messages are supported in the s
 <a name="25-fault-messages"></a>
 ### 2.5 Fault Messages
 
-For technical errors the security server must return a SOAP Fault message [SOAPFAULT](#Ref_SOAPFAULT). The SOAP Fault message contains the information about the error, such as error code, error message etc. The SOAP Fault MAY contain X-Road Headers and it MAY be described in the service WSDL.
+For technical errors the security server must return a SOAP Fault message \[[SOAPFAULT](#Ref_SOAPFAULT)\]. The SOAP Fault message contains the information about the error, such as error code, error message etc. The SOAP Fault MAY contain X-Road Headers and it MAY be described in the service WSDL.
 
 <a name="26-character-encoding"></a>
 ### 2.6 Character Encoding
