@@ -79,10 +79,16 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 <a name="12-references"></a>
 ### 1.2 References
 
+|            |                                 |
+|------------|---------------------------------|
+| <a name="Ref_SOAP"></a>\[SOAP\] | Simple Object Access Protocol (SOAP) 1.1, 2000. |
+| <a name="Ref_RFC2119"></a>\[RFC2119\] | Key words for use in RFCs to Indicate Requirement Levels, Internet Engineering Task Force, 1997. |
+| <a name="Ref_WRAPPED"></a>\[WRAPPED\] | Usage of document/literal wrapped pattern in WSDL design,<br>[http://www.ibm.com/developerworks/library/ws-usagewsdl/](http://www.ibm.com/developerworks/library/ws-usagewsdl/). |
+
+
 <a name="Ref_SOAP"></a>\[SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
 
-<a name="Ref_RFC2119"></a>\[RFC2119\] Key words for use in RFCs to Indicate Requirement Levels, Internet
-Engineering Task Force, 1997.
+<a name="Ref_RFC2119"></a>\[RFC2119\] Key words for use in RFCs to Indicate Requirement Levels, Internet Engineering Task Force, 1997.
 
 <a name="Ref_DSIG"></a>\[DSIG\] XML Signature Syntax and Processing Version 2.0, 2013.
 
