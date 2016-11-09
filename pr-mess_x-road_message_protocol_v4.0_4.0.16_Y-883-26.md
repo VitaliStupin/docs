@@ -27,17 +27,24 @@ Doc. ID: PR-MESS
 
 [License](#license)
 
-[1 Introduction](#introduction)
-    [1.1 Terms and Abbreviations](#terms-and-abbreviations)
-    [1.2 References](#references)
-    [1.3 Identifying Entities](#identifying-entities)
-[2 Format of Messages 7](#_Toc451190000)
-    [2.1 Identifiers 7](#_Toc451190001)
-    [2.2 Message Headers 8](#_Toc451190002)
-    [2.3 Message Body 10](#_Toc451190003)
-    [2.4 Attachments 10](#_Toc451190004)
-    [2.5 Fault Messages 10](#_Toc451190005)
-    [2.6 Character Encoding 11](#_Toc451190006)
+1. [1 Introduction](#introduction)
+  1.1 [1.1 Terms and Abbreviations](#terms-and-abbreviations)
+  1.2 [1.2 References](#references)
+  1.3 [1.3 Identifying Entities](#identifying-entities)
+2. [2 Format of Messages 7](#_Toc451190000)
+
+[2.1 Identifiers 7](#_Toc451190001)
+
+[2.2 Message Headers 8](#_Toc451190002)
+
+[2.3 Message Body 10](#_Toc451190003)
+
+[2.4 Attachments 10](#_Toc451190004)
+
+[2.5 Fault Messages 10](#_Toc451190005)
+
+[2.6 Character Encoding 11](#_Toc451190006)
+
 [3 Describing Services 12](#_Toc451190007)
 
 [3.1 General 12](#_Toc451190008)
