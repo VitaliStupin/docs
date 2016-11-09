@@ -25,9 +25,9 @@ Doc. ID: PR-MESS
 
 ## Table of Contents
 
-[License](#license)
+[License](#Head_License)
 
-[1 Introduction](#1-introduction)
+[1 Introduction](#Head_Introduction)
 
 [1.1 Terms and Abbreviations](#11-terms-and-abbreviations)
 
@@ -69,10 +69,12 @@ Doc. ID: PR-MESS
 
 [Annex G Example Request with MTOM Attachment 30](#_Toc451190016)
 
+<a name="Head_License"></a>
 ## License
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
 
+<a name="Head_Introduction"></a>
 ## 1 Introduction
 
 This specification describes the X-Road message protocol version 4.0. This protocol is used between information systems and security servers in the X-Road system. The protocol is implemented as a profile of the SOAP 1.1 protocol \[[SOAP](#Ref_SOAP)\]. Because this protocol inherits the general model, the transport mechanism, and the error handling mechanism of the base SOAP protocol, these issues are not discussed separately in this specification.
@@ -97,7 +99,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 <a name="Ref_SOAP"></a>\[SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
 
-\[<a name="Ref_RFC2119">RFC2119</a>\] Key words for use in RFCs to Indicate Requirement Levels, Internet
+<a name="Ref_RFC2119"></a>\[RFC2119\] Key words for use in RFCs to Indicate Requirement Levels, Internet
 Engineering Task Force, 1997.
 
 \[<span id="Ref_DSIG" class="anchor"></span>DSIG\] XML Signature Syntax and Processing Version 2.0, 2013.
