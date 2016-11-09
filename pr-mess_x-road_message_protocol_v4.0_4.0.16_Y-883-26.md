@@ -134,7 +134,7 @@ The messages in this protocol are based on SOAP 1.1 format \[SOAP\].
 <a name="21-identifiers"></a>
 ### 2.1 Identifiers
 
-This section describes XML-based data formats for expressing the identifiers described informally in Section 1.3 . The data structures and elements defined in this section will be located under namespace ```http://x-road.eu/xsd/identifiers```. The complete XML Schema is shown in [Annex A](#annex-a-xml-schema-for-identifiers).
+This section describes XML-based data formats for expressing the identifiers described informally in Section 1.3 . The data structures and elements defined in this section will be located under namespace `http://x-road.eu/xsd/identifiers`. The complete XML Schema is shown in [Annex A](#annex-a-xml-schema-for-identifiers).
 
 The following listing shows the header of the schema definition.
 
@@ -146,7 +146,7 @@ The following listing shows the header of the schema definition.
     xmlns="http://x-road.eu/xsd/identifiers">
 ```
 
-The ```XRoadIdentifierType``` complex type serves as the base for all other identifier types (derived by restriction). It contains a union of all fields that can be present in different identifiers. The attribute ```objectType``` contains the type of the identifier and can be used, for example, to distinguish between X-Road member and subsystem identifiers without resorting to conditions that check for presence of individual fields.
+The `XRoadIdentifierType` complex type serves as the base for all other identifier types (derived by restriction). It contains a union of all fields that can be present in different identifiers. The attribute `objectType` contains the type of the identifier and can be used, for example, to distinguish between X-Road member and subsystem identifiers without resorting to conditions that check for presence of individual fields.
 
 ```xml
     <xs:complexType name="XRoadIdentifierType">
@@ -162,7 +162,7 @@ The ```XRoadIdentifierType``` complex type serves as the base for all other iden
     </xs:complexType>
 ```
 
-The enumeration ```XRoadObjectType``` lists all possible values of the ```objectType``` attribute.
+The enumeration `XRoadObjectType` lists all possible values of the `objectType` attribute.
 
 ```xml
     <xs:simpleType name="XRoadObjectType">
@@ -175,7 +175,7 @@ The enumeration ```XRoadObjectType``` lists all possible values of the ```object
     </xs:simpleType>
 ```
 
-Next, we define elements and attributes used in the ```XRoadIdentifierType```.
+Next, we define elements and attributes used in the `XRoadIdentifierType`.
 
 ```xml
     <xs:element name="xRoadInstance" type="xs:string"/>
@@ -187,7 +187,7 @@ Next, we define elements and attributes used in the ```XRoadIdentifierType```.
     <xs:attribute name="objectType" type="XRoadObjectType"/>
 ```
 
-Finally, we define complex types for representing concrete types of identifiers. First, the ```XRoadClientIdentifierType``` is used to represent identifiers that can be used by the service clients, namely X-Road members and subsystems.
+Finally, we define complex types for representing concrete types of identifiers. First, the `XRoadClientIdentifierType` is used to represent identifiers that can be used by the service clients, namely X-Road members and subsystems.
 
 ```xml
     <xs:complexType name="XRoadClientIdentifierType">
@@ -204,7 +204,7 @@ Finally, we define complex types for representing concrete types of identifiers.
     </xs:complexType>
 ```
 
-The ```XRoadServiceIdentifierType``` can be used to represent identifiers of services.
+The `XRoadServiceIdentifierType` can be used to represent identifiers of services.
 
 ```xml
     <xs:complexType name="XRoadServiceIdentifierType">
@@ -223,7 +223,7 @@ The ```XRoadServiceIdentifierType``` can be used to represent identifiers of ser
     </xs:complexType>
 ```
 
-The ```XRoadCentralServiceIdentifierType``` can be used to represent identifiers of central services.
+The `XRoadCentralServiceIdentifierType` can be used to represent identifiers of central services.
 
 ```xml
     <xs:complexType name="XRoadCentralServiceIdentifierType">
@@ -241,9 +241,9 @@ The ```XRoadCentralServiceIdentifierType``` can be used to represent identifiers
 <a name="22-message-headers"></a>
 ### 2.2 Message Headers
 
-This section describes additional SOAP headers that are used by the X-Road system. It makes use of data types specified in Section 2.1 . The header fields are described in Table 1.
+This section describes additional SOAP headers that are used by the X-Road system. It makes use of data types specified in [Section 2.1](#21-identifiers). The header fields are described in [Table 1](#Ref_Supported_header_fields).
 
-Table <span id="Ref_Supported_header_fields" class="anchor"></span>1. Supported header fields
+<a name="Ref_Supported_header_fields"></a>Table 1. Supported header fields
 
 | Field           | Type                              | Mandatory/Optional     | Description                                                                                                                                                                                                               |
 |-----------------|-----------------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -263,9 +263,9 @@ When responding, the service MUST copy all the header fields from the request to
 
 The requestHash field is used to create a strong connection between a request and a response. Thus, it is possible to prove, for example, that a certain registry record is returned in response to a certain query. The requestHash is computed from the byte contents of the SOAP request message using the algorithm from the requestHash/@algorithmId field. The byte contents of the SOAP request message are:
 
--   in case the request has no attachments – the byte contents of the HTTP POST request sent to the service client's security server;
+- in case the request has no attachments – the byte contents of the HTTP POST request sent to the service client's security server;
 
--   in case the request is a multipart MIME message with attachments – the byte contents of the first part of the multipart message. Messages with attachments are described in more detail in Section 2.4 .
+- in case the request is a multipart MIME message with attachments – the byte contents of the first part of the multipart message. Messages with attachments are described in more detail in Section 2.4 .
 
 The requestHash field MUST be automatically created by the service provider's security server when receiving the service response message and MUST be verified by the service client's security server.
 
