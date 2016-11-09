@@ -98,7 +98,8 @@ Engineering Task Force, 1997.
 
 <a name="Ref_SWAREF"></a>\[SWAREF\] Attachments Profile Version 1.0, 2004.
 
-<a name="Ref_WRAPPED"></a>\[WRAPPED\] Usage of document/literal wrapped pattern in WSDL design, [http://www.ibm.com/developerworks/library/ws-usagewsdl/](http://www.ibm.com/developerworks/library/ws-usagewsdl/).
+<a name="Ref_WRAPPED"></a>\[WRAPPED\] Usage of document/literal wrapped pattern in WSDL design,  
+[http://www.ibm.com/developerworks/library/ws-usagewsdl/](http://www.ibm.com/developerworks/library/ws-usagewsdl/).
 
 <a name="13-identifying-entities"></a>
 ### 1.3 Identifying Entities
