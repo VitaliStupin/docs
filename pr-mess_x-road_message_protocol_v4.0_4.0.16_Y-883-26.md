@@ -105,17 +105,17 @@ Significant entities in the X-Road system have globally unique identifiers. Iden
 
 All the identifiers start with the code identifying the instance of the X-Road system. Typically, this should be the ISO code of the country running the X-Road instance, optionally amended with a suffix corresponding to the environment. For example, for Estonia, the production environment is designated as “EE”, whereas the test environment is “EE-test”. The codes for X-Road instances are the only ones that need to be globally unique. All other parts of the identifiers are managed by X-Road instances.
 
-Next, we will describe how globally unique identifiers are constructed for various types of entities. When representing entities as strings the format *T:C1/C2/...* is used, where *T* is type of the entity and *C1, C2, ...* are the component codes. Note: the given format is only used in this document. In messages and configuration files, the identifiers are represented in XML format described in Section 2.1 .
+Next, we will describe how globally unique identifiers are constructed for various types of entities. When representing entities as strings the format *T:C1/C2/...* is used, where *T* is type of the entity and *C1, C2, ...* are the component codes. Note: the given format is only used in this document. In messages and configuration files, the identifiers are represented in XML format described in [Section 2.1](#21-identifiers).
 
 -   **X-Road member** – *MEMBER:\[X-Road instance\]/\[member class\]/\[member code\]*. The identifier consists of the following components:
 
-> – code corresponding to the X-Road instance;
->
-> – code identifying the member class (e.g., government agency, private enterprise, physical person. Typically, member codes are issued by an authority guaranteeing the uniqueness of the codes within the given member class); and
->
-> – member code that uniquely identifies the given X-Road member within its member class.
->
-> Example: identifier MEMBER:EE/BUSINESS/123456789 represents an organization registered in Estonia (EE) with a business registry code (BUSINESS) of 123456789.
+  – code corresponding to the X-Road instance;
+
+  – code identifying the member class (e.g., government agency, private enterprise, physical person. Typically, member codes are issued by an authority guaranteeing the uniqueness of the codes within the given member class); and
+
+  – member code that uniquely identifies the given X-Road member within its member class.
+
+  Example: identifier MEMBER:EE/BUSINESS/123456789 represents an organization registered in Estonia (EE) with a business registry code (BUSINESS) of 123456789.
 
 -   **Subsystem** – *SUBSYSTEM:\[subsystem owner\]/\[subsystem code\]*. Identifier for a subsystem consists of the identifier of the X-Road member that owns the subsystem, and a subsystem code. The subsystem code is chosen by the X-Road member and it must be unique among the subsystems of this member.
     Example: SUBSYSTEM:EE/BUSINESS/123456789/highsecurity identifies a subsystem with code highsecurity belonging to the X-Road member from the previous example (MEMBER:EE/BUSINESS/123456789).
@@ -255,7 +255,7 @@ This section describes additional SOAP headers that are used by the X-Road syste
 | issue           | string                            | O                      | Identifies received application, issue or document that was the cause of the service request. This field may be used by the client information system to connect service requests (and responses) to working procedures. |
 | protocolVersion | string                            | M                      | X-Road message protocol version. The value of this field MUST be 4.0                                                                                                                                                   |
 | requestHash     | string                            | O                      | For responses, this field contains a Base64 encoded hash of the request SOAP message. This field is automatically filled in by the service provider's security server.                                                 |
-| requestHash/@algorithmId | string                   | M                      | Identifies the hash algorithm that was used to calculate the value of the requestHash field. The algorithms are specified as URIs listed in the XML-DSIG specification \[DSIG\].                                   |
+| requestHash/@algorithmId | string                   | M                      | Identifies the hash algorithm that was used to calculate the value of the requestHash field. The algorithms are specified as URIs listed in the XML-DSIG specification \[[DSIG](#Ref_DSIG)\].                                   |
 
 When a service client sends a request to the security server, exactly one of the fields service or centralService MUST be present. If the centralService field is used, the security server resolves the central service and automatically fills in the service field with the identifier of the concrete service that implements the central service. Thus, in the request sent to the service, both fields MAY be present (the service field is always present).
 
