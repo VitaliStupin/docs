@@ -1,10 +1,9 @@
 #X-Road: Message Protocol v4.0
                                 
 **Technical Specification**    
-Version: 4.0.16               
 
+Version: 4.0.16               
 16.05.2016                     
-30 pages                       
 Doc. ID: PR-MESS               
 
 | Date       | Version     | Description                                                                  | Author             |
@@ -27,11 +26,11 @@ Doc. ID: PR-MESS
 
 ##Table of Contents
 
-[License](#reflicense)
+[License](#license)
 
-[1 Introduction 5](#_Toc451189996)
+[1 Introduction](#introduction)
 
-[1.1 Terms and Abbreviations 5](#_Toc451189997)
+[1.1 Terms and Abbreviations](#terms-and-abbreviations)
 
 [1.2 References 5](#_Toc451189998)
 
@@ -71,13 +70,11 @@ Doc. ID: PR-MESS
 
 [Annex G Example Request with MTOM Attachment 30](#_Toc451190016)
 
-<a name="reflicense"></a>
 ##License
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
 
-<span id="__RefHeading__1436_2115075793" class="anchor"><span id="_Toc451189996" class="anchor"></span></span>Introduction
-==========================================================================================================================
+##1 Introduction
 
 This specification describes the X-Road message protocol version 4.0. This protocol is used between information systems and security servers in the X-Road system. The protocol is implemented as a profile of the SOAP 1.1 protocol \[SOAP\]. Because this protocol inherits the general model, the transport mechanism, and the error handling mechanism of the base SOAP protocol, these issues are not discussed separately in this specification.
 
@@ -87,8 +84,7 @@ This specification does not include option for partially implementing the protoc
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document (in uppercase, as shown) are to be interpreted as described in \[RFC2119\].
 
-<span id="__RefHeading__1444_2115075793" class="anchor"><span id="_Toc451189997" class="anchor"></span></span>Terms and Abbreviations
--------------------------------------------------------------------------------------------------------------------------------------
+##1.1 Terms and Abbreviations
 
 -   **X-Road member** – natural or legal person who uses functionality offered by X-Road
 
