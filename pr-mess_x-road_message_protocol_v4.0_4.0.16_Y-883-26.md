@@ -129,7 +129,7 @@ Next, we will describe how globally unique identifiers are constructed for vario
 <a name="2-format-of-messages"></a>
 ## 2 Format of Messages
 
-The messages in this protocol are based on SOAP 1.1 format \[SOAP\].
+The messages in this protocol are based on SOAP 1.1 format \[[SOAP](#Ref_SOAP)\].
 
 <a name="21-identifiers"></a>
 ### 2.1 Identifiers
@@ -257,21 +257,21 @@ This section describes additional SOAP headers that are used by the X-Road syste
 | requestHash     | string                            | O                      | For responses, this field contains a Base64 encoded hash of the request SOAP message. This field is automatically filled in by the service provider's security server.                                                 |
 | requestHash/@algorithmId | string                   | M                      | Identifies the hash algorithm that was used to calculate the value of the requestHash field. The algorithms are specified as URIs listed in the XML-DSIG specification \[[DSIG](#Ref_DSIG)\].                                   |
 
-When a service client sends a request to the security server, exactly one of the fields service or centralService MUST be present. If the centralService field is used, the security server resolves the central service and automatically fills in the service field with the identifier of the concrete service that implements the central service. Thus, in the request sent to the service, both fields MAY be present (the service field is always present).
+When a service client sends a request to the security server, exactly one of the fields `service` or `centralService` MUST be present. If the `centralService` field is used, the security server resolves the central service and automatically fills in the `service` field with the identifier of the concrete service that implements the central service. Thus, in the request sent to the service, both fields MAY be present (the `service` field is always present).
 
 When responding, the service MUST copy all the header fields from the request to the response in the exact same sequence with the exact same values. The XML namespace prefix of the header fields has no significance to the security server, but the prefix must reference the same namespace as in the request.
 
-The requestHash field is used to create a strong connection between a request and a response. Thus, it is possible to prove, for example, that a certain registry record is returned in response to a certain query. The requestHash is computed from the byte contents of the SOAP request message using the algorithm from the requestHash/@algorithmId field. The byte contents of the SOAP request message are:
+The `requestHash` field is used to create a strong connection between a request and a response. Thus, it is possible to prove, for example, that a certain registry record is returned in response to a certain query. The `requestHash` is computed from the byte contents of the SOAP request message using the algorithm from the `requestHash/@algorithmId` field. The byte contents of the SOAP request message are:
 
 - in case the request has no attachments – the byte contents of the HTTP POST request sent to the service client's security server;
 
-- in case the request is a multipart MIME message with attachments – the byte contents of the first part of the multipart message. Messages with attachments are described in more detail in Section 2.4 .
+- in case the request is a multipart MIME message with attachments – the byte contents of the first part of the multipart message. Messages with attachments are described in more detail in [Section 2.4](#24-attachments).
 
-The requestHash field MUST be automatically created by the service provider's security server when receiving the service response message and MUST be verified by the service client's security server.
+The `requestHash` field MUST be automatically created by the service provider's security server when receiving the service response message and MUST be verified by the service client's security server.
 
-The request message SHOULD NOT contain the requestHash field. The response message sent by service to the service provider's security server SHOULD NOT contain the requestHash field. If the response message contains the requestHash field, the service provider's security server MUST ignore the field and replace it with the created field.
+The request message SHOULD NOT contain the `requestHash` field. The response message sent by service to the service provider's security server SHOULD NOT contain the `requestHash` field. If the response message contains the requestHash field, the service provider's security server MUST ignore the field and replace it with the created field.
 
-The requestHash field SHOULD NOT be described in the service WSDL.
+The `requestHash` field SHOULD NOT be described in the service WSDL.
 
 Content-type HTTP header of the client request message is preserved in the security servers and is forwarded to the service. All other HTTP headers of the client request message are not preserved by the security servers and are not forwarded to the service.
 
@@ -282,14 +282,14 @@ Starting with X-Road message protocol version 4.0 any protocols with the same ma
 <a name="23-message-body"></a>
 ### 2.3 Message Body
 
-The message body MUST use Document/Literal-Wrapped SOAP encoding convention. According to this convention, both the body of the request and the response must be wrapped in an element. The element names of the request and response are correlated – if the request element is named foo then the response element is named fooResponse. Additionally, the name of the wrapper element of the request must match the serviceCode element of the service header field.
+The message body MUST use Document/Literal-Wrapped SOAP encoding convention. According to this convention, both the body of the request and the response must be wrapped in an element. The element names of the request and response are correlated – if the request element is named `foo` then the response element is named `fooResponse`. Additionally, the name of the wrapper element of the request must match the `serviceCode` element of the `service` header field.
 
 <a name="24-attachments"></a>
 ### 2.4 Attachments
 
-In case the message has attachments, it MUST be formatted as a multipart MIME message, with the SOAP request and its attachments being separate parts of the message. The SOAP request must be the first part. The resulting MIME message MUST be structured in accordance with the specification for SOAP messages with attachments \[SOAPATT\] and the request SOAP part's *Content-Transfer-Encoding* MIME header value MUST be “8bit”. MIME headers of each part of the message are preserved without modification in the security server. For an example request that contains attachments see Annex F .
+In case the message has attachments, it MUST be formatted as a multipart MIME message, with the SOAP request and its attachments being separate parts of the message. The SOAP request must be the first part. The resulting MIME message MUST be structured in accordance with the specification for SOAP messages with attachments \[[SOAPATT](#Ref_SOAPATT)\] and the request SOAP part's *Content-Transfer-Encoding* MIME header value MUST be "8bit". MIME headers of each part of the message are preserved without modification in the security server. For an example request that contains attachments see [Annex F](#annex-f-example-request-with-attachment).
 
-Additionally, MTOM-encoded \[MTOM\] messages are supported in the security server – the security server accepts MIME multipart messages where the content-type of the SOAP part is “application/xop+xml”.
+Additionally, MTOM-encoded \[[MTOM](#Ref_MTOM)\] messages are supported in the security server – the security server accepts MIME multipart messages where the content-type of the SOAP part is "application/xop+xml".
 
 <a name="25-fault-messages"></a>
 ### 2.5 Fault Messages
