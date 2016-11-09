@@ -356,7 +356,7 @@ The traditional way of describing SOAP attachments in WSDL documents \[[WSDL](#R
 
 For example of swaRef and MTOM on-the-wire messages with attachments see [Annex F](#annex-f-example-request-with-attachment) and [Annex G](#annex-g-example-request-with-mtom-attachment) respectively. For both swaRef and MTOM service description WSDL examples see [Annex C](#annex-c-example-wsdl).
 
-Table 2 lists elements that can be added to a WSDL description to transfer information specific to X-Road. The namespace prefix xrd is bound to namespace "http://x-road.eu/xsd/xroad.xsd".
+Table 2 lists elements that can be added to a WSDL description to transfer information specific to X-Road. The namespace prefix `xrd` is bound to namespace "`http://x-road.eu/xsd/xroad.xsd`".
 
 <a name="Ref_WSDL_elements_for_X_Road_services"></a>Table 2. WSDL elements for X-Road services
 
