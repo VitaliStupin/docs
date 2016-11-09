@@ -372,177 +372,6 @@ Table 2 lists elements that can be added to a WSDL description to transfer infor
 ## Annex A XML Schema for Identifiers
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema elementFormDefault="qualified" jxb:version="2.1" targetNamespace="http://x-road.eu/xsd/identifiers" xmlns="http://x-road.eu/xsd/identifiers" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:complexType name="XRoadIdentifierType">
-        <xs:annotation>
-            <xs:documentation>Globally unique identifier in the X-Road system. Identifier consists of object type specifier and list of hierarchical codes (starting with code that identifiers the X-Road instance).</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:element minOccurs="0" ref="xRoadInstance"/>
-            <xs:element minOccurs="0" ref="memberClass"/>
-            <xs:element minOccurs="0" ref="memberCode"/>
-            <xs:element minOccurs="0" ref="subsystemCode"/>
-            <xs:element minOccurs="0" ref="groupCode"/>
-            <xs:element minOccurs="0" ref="serviceCode"/>
-            <xs:element minOccurs="0" ref="serviceVersion"/>
-            <xs:element minOccurs="0" ref="securityCategoryCode"/>
-            <xs:element minOccurs="0" ref="serverCode"/>
-        </xs:sequence>
-        <xs:attribute ref="objectType" use="required"/>
-    </xs:complexType>
-    <xs:simpleType name="XRoadObjectType">
-        <xs:annotation>
-            <xs:documentation>Enumeration for X-Road identifier types.</xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="MEMBER"/>
-            <xs:enumeration value="SUBSYSTEM"/>
-            <xs:enumeration value="SERVER"/>
-            <xs:enumeration value="GLOBALGROUP"/>
-            <xs:enumeration value="LOCALGROUP"/>
-            <xs:enumeration value="SECURITYCATEGORY"/>
-            <xs:enumeration value="SERVICE"/>
-            <xs:enumeration value="CENTRALSERVICE"/>
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:element name="xRoadInstance" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Identifies the X-Road instance. This field is applicable to all identifier types.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="memberClass" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Type of the member (company, government institution, private person, etc.)</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="memberCode" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Code that uniquely identifies a member of given member type.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="subsystemCode" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Code that uniquely identifies a subsystem of given X-Road member.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="groupCode" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Code that uniquely identifies a global group in given X-Road instance.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="serviceCode" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Code that uniquely identifies a service offered by given X-Road member or subsystem.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="serviceVersion" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Version of the service.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="securityCategoryCode" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Code that uniquely identifies security category in a given X-Road instance.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="serverCode" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>Code that uniquely identifies security server offered by a given X-Road member or subsystem.</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:attribute name="objectType" type="XRoadObjectType"/>
-    <xs:complexType name="XRoadClientIdentifierType">
-        <xs:complexContent>
-            <xs:restriction base="XRoadIdentifierType">
-                <xs:sequence>
-                    <xs:element ref="xRoadInstance"/>
-                    <xs:element ref="memberClass"/>
-                    <xs:element ref="memberCode"/>
-                    <xs:element minOccurs="0" ref="subsystemCode"/>
-                </xs:sequence>
-                <xs:attribute ref="objectType" use="required"/>
-            </xs:restriction>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="XRoadServiceIdentifierType">
-        <xs:complexContent>
-            <xs:restriction base="XRoadIdentifierType">
-                <xs:sequence>
-                    <xs:element ref="xRoadInstance"/>
-                    <xs:element ref="memberClass"/>
-                    <xs:element ref="memberCode"/>
-                    <xs:element minOccurs="0" ref="subsystemCode"/>
-                    <xs:element ref="serviceCode"/>
-                    <xs:element minOccurs="0" ref="serviceVersion"/>
-                </xs:sequence>
-                <xs:attribute ref="objectType" use="required" fixed="SERVICE"/>
-            </xs:restriction>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="XRoadSecurityCategoryIdentifierType">
-        <xs:complexContent>
-            <xs:restriction base="XRoadIdentifierType">
-                <xs:sequence>
-                    <xs:element ref="xRoadInstance"/>
-                    <xs:element ref="securityCategoryCode"/>
-                </xs:sequence>
-                <xs:attribute ref="objectType" use="required" fixed="SECURITYCATEGORY"/>
-            </xs:restriction>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="XRoadCentralServiceIdentifierType">
-        <xs:complexContent>
-            <xs:restriction base="XRoadIdentifierType">
-                <xs:sequence>
-                    <xs:element ref="xRoadInstance"/>
-                    <xs:element ref="serviceCode"/>
-                </xs:sequence>
-                <xs:attribute ref="objectType" use="required" fixed="CENTRALSERVICE"/>
-            </xs:restriction>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="XRoadSecurityServerIdentifierType">
-        <xs:complexContent>
-            <xs:restriction base="XRoadIdentifierType">
-                <xs:sequence>
-                    <xs:element ref="xRoadInstance"/>
-                    <xs:element ref="memberClass"/>
-                    <xs:element ref="memberCode"/>
-                    <xs:element ref="serverCode"/>
-                </xs:sequence>
-                <xs:attribute ref="objectType" use="required" fixed="SERVER"/>
-            </xs:restriction>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="XRoadGlobalGroupIdentifierType">
-        <xs:complexContent>
-            <xs:restriction base="XRoadIdentifierType">
-                <xs:sequence>
-                    <xs:element ref="xRoadInstance"/>
-                    <xs:element ref="groupCode"/>
-                </xs:sequence>
-                <xs:attribute ref="objectType" use="required" fixed="GLOBALGROUP"/>
-            </xs:restriction>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="XRoadLocalGroupIdentifierType">
-        <xs:complexContent>
-            <xs:restriction base="XRoadIdentifierType">
-                <xs:sequence>
-                    <xs:element ref="groupCode"/>
-                </xs:sequence>
-                <xs:attribute ref="objectType" use="required" fixed="LOCALGROUP"/>
-            </xs:restriction>
-        </xs:complexContent>
-    </xs:complexType>
-</xs:schema>
-```
-
-<a name="annex-b-xml-schema-for-mMessages"></a>
-## Annex B XML Schema for Messages
-
-```xml
 
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified"
@@ -728,6 +557,129 @@ Table 2 lists elements that can be added to a WSDL description to transfer infor
             </xs:restriction>
         </xs:complexContent>
     </xs:complexType>
+</xs:schema>
+```
+
+<a name="annex-b-xml-schema-for-mMessages"></a>
+## Annex B XML Schema for Messages
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+        targetNamespace="http://x-road.eu/xsd/xroad.xsd"
+        xmlns="http://x-road.eu/xsd/xroad.xsd"
+        xmlns:id="http://x-road.eu/xsd/identifiers"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+            schemaLocation="http://www.w3.org/2009/01/xml.xsd"/> 
+    <xs:import id="id" namespace="http://x-road.eu/xsd/identifiers"
+            schemaLocation="http://x-road.eu/xsd/identifiers.xsd"/>
+
+    <!-- Header elements -->
+    <xs:element name="client" type="id:XRoadClientIdentifierType">
+        <xs:annotation>
+            <xs:documentation>Identies service client</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="service" type="id:XRoadServiceIdentifierType">
+        <xs:annotation>
+            <xs:documentation>Identies the service
+                that is invoked by the request</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="centralService"
+            type="id:XRoadCentralServiceIdentifierType">
+        <xs:annotation>
+            <xs:documentation>Identies the central service
+                that is invoked by the request.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Unique identier
+                for this message</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="userId" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>User whose action initiated
+                the request</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="requestHash">
+        <xs:annotation>
+            <xs:documentation>Base64 encoded hash of
+                the SOAP request message</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="algorithmId" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Identies hash algorithm
+                                that was used to calculate the value
+                                of the requestHash field.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="issue" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Identies received application, issue or document
+                that was the cause of the service request.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="protocolVersion" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>X-Road message protocol version</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <!-- Elements describing other elements and operations-->
+    <xs:element name="version" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Version of the service</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="title">
+        <xs:annotation>
+            <xs:documentation>Title of the service</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute default="en" ref="xml:lang"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="notes">
+        <xs:annotation>
+            <xs:documentation>Notes for user</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" default="en" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="techNotes">
+        <xs:annotation>
+            <xs:documentation>Notes for technical stuff</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" default="en" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
 ```
 
