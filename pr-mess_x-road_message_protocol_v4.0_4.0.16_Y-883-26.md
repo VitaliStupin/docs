@@ -1,5 +1,4 @@
 #X-Road: Message Protocol v4.0
-                                
 **Technical Specification**    
 
 Version: 4.0.16               
@@ -28,13 +27,13 @@ Doc. ID: PR-MESS
 
 [License](#license)
 
-[1 Introduction](#introduction)
+[1 Introduction](#1-introduction)
 
-[1.1 Terms and Abbreviations](#terms-and-abbreviations)
+[1.1 Terms and Abbreviations](#11-terms-and-abbreviations)
 
-[1.2 References 5](#_Toc451189998)
+[1.2 References](#12-references)
 
-[1.3 Identifying Entities 5](#_Toc451189999)
+[1.3 Identifying Entities](#13-identifying-entities)
 
 [2 Format of Messages 7](#_Toc451190000)
 
@@ -76,13 +75,13 @@ This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unpo
 
 ##1 Introduction
 
-This specification describes the X-Road message protocol version 4.0. This protocol is used between information systems and security servers in the X-Road system. The protocol is implemented as a profile of the SOAP 1.1 protocol \[SOAP\]. Because this protocol inherits the general model, the transport mechanism, and the error handling mechanism of the base SOAP protocol, these issues are not discussed separately in this specification.
+This specification describes the X-Road message protocol version 4.0. This protocol is used between information systems and security servers in the X-Road system. The protocol is implemented as a profile of the SOAP 1.1 protocol \[[SOAP](#Ref_SOAP)\]. Because this protocol inherits the general model, the transport mechanism, and the error handling mechanism of the base SOAP protocol, these issues are not discussed separately in this specification.
 
 Chapters 2 and 3 , as well as Annex A , Annex B of this specification contain normative information. All the other chapters are informative in nature. All the references are normative.
 
 This specification does not include option for partially implementing the protocol – the conformant implementation must implement the entire specification.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document (in uppercase, as shown) are to be interpreted as described in \[RFC2119\].
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document (in uppercase, as shown) are to be interpreted as described in \[[RFC2119](#Ref_RFC2119)\].
 
 ##1.1 Terms and Abbreviations
 
@@ -94,12 +93,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 -   **X-Road service** – SOAP-based web service that is offered by an X-Road member or by a subsystem and that can be used by other X-Road members or subsystems.
 
-##<span id="__RefHeading__1446_2115075793" class="anchor"><span id="_Toc451189998" class="anchor"></span></span>References
-        ------------------------------------------------------------------------------------------------------------------------
+##1.2 References
 
-\[<span id="Ref_SOAP" class="anchor"></span>SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
+<a name="Ref_SOAP"></a>\[SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
 
-\[<span id="Ref_RFC2119" class="anchor"></span>RFC2119\] Key words for use in RFCs to Indicate Requirement Levels, Internet
+\[<a name="Ref_RFC2119">RFC2119</a>\] Key words for use in RFCs to Indicate Requirement Levels, Internet
 Engineering Task Force, 1997.
 
 \[<span id="Ref_DSIG" class="anchor"></span>DSIG\] XML Signature Syntax and Processing Version 2.0, 2013.
