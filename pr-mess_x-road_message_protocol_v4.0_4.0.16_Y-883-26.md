@@ -25,30 +25,19 @@ Doc. ID: PR-MESS
 
 ## Table of Contents
 
-[License](#Head_License)
+[License](#license)
 
-[1 Introduction](#Head_Introduction)
-
-[1.1 Terms and Abbreviations](#11-terms-and-abbreviations)
-
-[1.2 References](#12-references)
-
-[1.3 Identifying Entities](#13-identifying-entities)
-
+[1 Introduction](#introduction)
+    [1.1 Terms and Abbreviations](#terms-and-abbreviations)
+    [1.2 References](#references)
+    [1.3 Identifying Entities](#identifying-entities)
 [2 Format of Messages 7](#_Toc451190000)
-
-[2.1 Identifiers 7](#_Toc451190001)
-
-[2.2 Message Headers 8](#_Toc451190002)
-
-[2.3 Message Body 10](#_Toc451190003)
-
-[2.4 Attachments 10](#_Toc451190004)
-
-[2.5 Fault Messages 10](#_Toc451190005)
-
-[2.6 Character Encoding 11](#_Toc451190006)
-
+    [2.1 Identifiers 7](#_Toc451190001)
+    [2.2 Message Headers 8](#_Toc451190002)
+    [2.3 Message Body 10](#_Toc451190003)
+    [2.4 Attachments 10](#_Toc451190004)
+    [2.5 Fault Messages 10](#_Toc451190005)
+    [2.6 Character Encoding 11](#_Toc451190006)
 [3 Describing Services 12](#_Toc451190007)
 
 [3.1 General 12](#_Toc451190008)
@@ -69,12 +58,12 @@ Doc. ID: PR-MESS
 
 [Annex G Example Request with MTOM Attachment 30](#_Toc451190016)
 
-<a name="Head_License"></a>
+<a name="license"></a>
 ## License
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
 
-<a name="Head_Introduction"></a>
+<a name="introduction"></a>
 ## 1 Introduction
 
 This specification describes the X-Road message protocol version 4.0. This protocol is used between information systems and security servers in the X-Road system. The protocol is implemented as a profile of the SOAP 1.1 protocol \[[SOAP](#Ref_SOAP)\]. Because this protocol inherits the general model, the transport mechanism, and the error handling mechanism of the base SOAP protocol, these issues are not discussed separately in this specification.
@@ -85,6 +74,7 @@ This specification does not include option for partially implementing the protoc
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document (in uppercase, as shown) are to be interpreted as described in \[[RFC2119](#Ref_RFC2119)\].
 
+<a name="terms-and-abbreviations"></a>
 ## 1.1 Terms and Abbreviations
 
 -   **X-Road member** – natural or legal person who uses functionality offered by X-Road
@@ -95,6 +85,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 -   **X-Road service** – SOAP-based web service that is offered by an X-Road member or by a subsystem and that can be used by other X-Road members or subsystems.
 
+<a name="references"></a>
 ## 1.2 References
 
 <a name="Ref_SOAP"></a>\[SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
@@ -102,22 +93,22 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 <a name="Ref_RFC2119"></a>\[RFC2119\] Key words for use in RFCs to Indicate Requirement Levels, Internet
 Engineering Task Force, 1997.
 
-\[<span id="Ref_DSIG" class="anchor"></span>DSIG\] XML Signature Syntax and Processing Version 2.0, 2013.
+<a name="Ref_DSIG"></a>\[DSIG\] XML Signature Syntax and Processing Version 2.0, 2013.
 
-\[<span id="Ref_SOAPATT" class="anchor"></span>SOAPATT\] SOAP Messages with Attachments, 2000.
+<a name="Ref_SOAPATT"></a>\[SOAPATT\] SOAP Messages with Attachments, 2000.
 
-\[<span id="Ref_WSDL" class="anchor"></span>WSDL\] Web Services Description Language (WSDL) 1.1, 2001.
+<a name="Ref_WSDL"></a>\[WSDL\] Web Services Description Language (WSDL) 1.1, 2001.
 
-\[<span id="Ref_XSD1" class="anchor"></span>XSD1\] XML Schema Part 1: Structures Second Edition, 2004.
+<a name="Ref_XSD1"></a>\[XSD1\] XML Schema Part 1: Structures Second Edition, 2004.
 
-\[<span id="Ref_XSD2" class="anchor"></span>XSD2\] XML Schema Part 2: Datatypes Second Edition, 2004.
+<a name="Ref_XSD2"></a>\[XSD2\] XML Schema Part 2: Datatypes Second Edition, 2004.
 
-\[<span id="Ref_MTOM" class="anchor"></span>MTOM\] SOAP 1.1 Binding for MTOM 1.0, 2006
+<a name="Ref_MTOM"></a>\[MTOM\] SOAP 1.1 Binding for MTOM 1.0, 2006.
 
-\[<span id="Ref_SWAREF" class="anchor"></span>SWAREF\] Attachments Profile Version 1.0, 2004
+<a name="Ref_SWAREF"></a>\[SWAREF\] Attachments Profile Version 1.0, 2004.
 
-<span id="__RefHeading__3891_1651205079" class="anchor"><span id="_Toc451189999" class="anchor"></span></span>Identifying Entities
-----------------------------------------------------------------------------------------------------------------------------------
+<a name="identifying-entities"></a>
+## Identifying Entities
 
 Significant entities in the X-Road system have globally unique identifiers. Identifiers consist of an object type and a sequence of hierarchical codes.
 
