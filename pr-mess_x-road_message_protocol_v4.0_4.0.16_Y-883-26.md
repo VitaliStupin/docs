@@ -1027,466 +1027,267 @@ This section contains example SOAP Fault messages.
 <a name="d1-technical"></a>
 ### D.1 Technical
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
-
-&lt;SOAP-ENV:Body&gt;
-
-&lt;SOAP-ENV:Fault&gt;
-
-&lt;faultcode&gt;Server.ClientProxy.ServiceFailed.MissingBody&lt;/faultcode&gt;
-
-&lt;faultstring&gt;Malformed SOAP message: body missing&lt;/faultstring&gt;
-
-&lt;faultactor&gt;&lt;/faultactor&gt;
-
-&lt;detail&gt;
-
-&lt;faultDetail xmlns=""&gt;f31e7451-f0ac-48f6-9f05-1f0459e48eea&lt;/faultDetail&gt;
-
-&lt;/detail&gt;
-
-&lt;/SOAP-ENV:Fault&gt;
-
-&lt;/SOAP-ENV:Body&gt;
-
-&lt;/SOAP-ENV:Envelope&gt;
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>Server.ClientProxy.ServiceFailed.MissingBody</faultcode>
+            <faultstring>Malformed SOAP message: body missing</faultstring>
+            <faultactor></faultactor>
+            <detail>
+                <faultDetail xmlns="">f31e7451-f0ac-48f6-9f05-1f0459e48eea</faultDetail>
+            </detail>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
 
 <a name="d2-non-technical"></a>
 ### D.2 Non-technical
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;SOAP-ENV:Envelope
-
-xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-
-xmlns:ns1="http://producer.x-road.eu"
-
-xmlns:id="http://x-road.eu/xsd/identifiers"
-
-xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"&gt;
-
-&lt;SOAP-ENV:Header&gt;
-
-&lt;xrd:client id:objectType="SUBSYSTEM"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER1&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM1&lt;/id:subsystemCode&gt;
-
-&lt;/xrd:client&gt;
-
-&lt;xrd:service id:objectType="SERVICE"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER2&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM2&lt;/id:subsystemCode&gt;
-
-&lt;id:serviceCode&gt;test&lt;/id:serviceCode&gt;
-
-&lt;id:serviceVersion&gt;v1&lt;/id:serviceVersion&gt;
-
-&lt;/xrd:service&gt;
-
-<span id="move435710306" class="anchor"></span> &lt;xrd:id&gt;4894e35d-bf0f-44a6-867a-8e51f1daa7e0&lt;/xrd:id&gt;
-
-&lt;xrd:userId&gt;EE12345678901&lt;/xrd:userId&gt;
-
-&lt;xrd:issue&gt;12345&lt;/xrd:issue&gt;
-
-&lt;xrd:protocolVersion&gt;4.0&lt;/xrd:protocolVersion&gt;
-
-&lt;xrd:requestHash
-
-algorithmId="http://www.w3.org/2001/04/xmlenc\#sha512"&gt;
-
-8r+UeXoU2WiEXRMdES8KBLhdQV/lt1DA+rLi2EUC239k
-
-OvBWGcBjYde27YIZtNQObsyHFQfX0V6pQ6LH3KS1Hw==
-
-&lt;/xrd:requestHash&gt;
-
-&lt;/SOAP-ENV:Header&gt;
-
-&lt;SOAP-ENV:Body&gt;
-
-&lt;ns1:exampleServiceResponse&gt;
-
-&lt;exampleOutput /&gt;
-
-&lt;fault&gt;
-
-&lt;faultCode&gt;test\_failed&lt;/faultCode&gt;
-
-&lt;faultString&gt;Could not read test parameters&lt;/faultString&gt;
-
-&lt;/fault&gt;
-
-&lt;/ns1:exampleServiceResponse &gt;
-
-&lt;/SOAP-ENV:Body&gt;
-
-&lt;/SOAP-ENV:Envelope&gt;
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:ns1="http://producer.x-road.eu"
+        xmlns:id="http://x-road.eu/xsd/identifiers"
+        xmlns:xrd="http://x-road.eu/xsd/xroad.xsd">
+    <SOAP-ENV:Header>
+        <xrd:client id:objectType="SUBSYSTEM">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER1</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM1</id:subsystemCode>
+        </xrd:client>
+        <xrd:service id:objectType="SERVICE">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER2</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM2</id:subsystemCode>
+            <id:serviceCode>test</id:serviceCode>
+            <id:serviceVersion>v1</id:serviceVersion>
+        </xrd:service>
+        <xrd:id>4894e35d-bf0f-44a6-867a-8e51f1daa7e0</xrd:id>
+        <xrd:userId>EE12345678901</xrd:userId>
+        <xrd:issue>12345</xrd:issue>
+        <xrd:protocolVersion>4.0</xrd:protocolVersion>
+        <xrd:requestHash
+                algorithmId="http://www.w3.org/2001/04/xmlenc#sha512">
+            8r+UeXoU2WiEXRMdES8KBLhdQV/lt1DA+rLi2EUC239k
+            OvBWGcBjYde27YIZtNQObsyHFQfX0V6pQ6LH3KS1Hw==
+        </xrd:requestHash>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:exampleServiceResponse>
+            <exampleOutput />
+            <fault>
+                <faultCode>test_failed</faultCode>
+                <faultString>Could not read test parameters</faultString>
+            </fault>
+        </ns1:exampleServiceResponse >
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
 
 <a name="annex-e-example-messages"></a>
 ## Annex E Example Messages
 
-This section contains example request and example response messages for a random number generator service.
+This section contains example request and example response messages for an example service.
 
 <a name="e1-request"></a>
 ### E.1 Request
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;SOAP-ENV:Envelope
-
-xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-
-xmlns:ns1="http://producer.x-road.eu"
-
-xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
-
-xmlns:id="http://x-road.eu/xsd/identifiers"&gt;
-
-&lt;SOAP-ENV:Header&gt;
-
-&lt;xrd:client id:objectType="SUBSYSTEM"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER1&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM1&lt;/id:subsystemCode&gt;
-
-&lt;/xrd:client&gt;
-
-&lt;xrd:service id:objectType="SERVICE"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER2&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM2&lt;/id:subsystemCode&gt;
-
-&lt;id:serviceCode&gt;exampleService&lt;/id:serviceCode&gt;
-
-&lt;id:serviceVersion&gt;v1&lt;/id:serviceVersion&gt;
-
-&lt;/xrd:service&gt;
-
-&lt;xrd:id&gt;4894e35d-bf0f-44a6-867a-8e51f1daa7e0&lt;/xrd:id&gt;
-
-&lt;xrd:userId&gt;EE12345678901&lt;/xrd:userId&gt;
-
-&lt;xrd:issue&gt;12345&lt;/xrd:issue&gt;
-
-&lt;xrd:protocolVersion&gt;4.0&lt;/xrd:protocolVersion&gt;
-
-&lt;/SOAP-ENV:Header&gt;
-
-&lt;SOAP-ENV:Body&gt;
-
-&lt;ns1:exampleService&gt;
-
-&lt;exampleInput&gt;foo&lt;/exampleInput&gt;
-
-&lt;/ns1:exampleService&gt;
-
-&lt;/SOAP-ENV:Body&gt;
-
-&lt;/SOAP-ENV:Envelope&gt;
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope 
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:ns1="http://producer.x-road.eu"
+        xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
+        xmlns:id="http://x-road.eu/xsd/identifiers">
+    <SOAP-ENV:Header>
+        <xrd:client id:objectType="SUBSYSTEM">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER1</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM1</id:subsystemCode>
+        </xrd:client>
+        <xrd:service id:objectType="SERVICE">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER2</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM2</id:subsystemCode>
+            <id:serviceCode>exampleService</id:serviceCode>
+            <id:serviceVersion>v1</id:serviceVersion>
+        </xrd:service>
+        <xrd:id>4894e35d-bf0f-44a6-867a-8e51f1daa7e0</xrd:id>
+        <xrd:userId>EE12345678901</xrd:userId>
+        <xrd:issue>12345</xrd:issue>
+        <xrd:protocolVersion>4.0</xrd:protocolVersion>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:exampleService>
+            <exampleInput>foo</exampleInput>
+        </ns1:exampleService>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
 
 <a name="e1-response"></a>
 ### E.2 Response
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;SOAP-ENV:Envelope
-
-xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-
-xmlns:ns1="http://producer.x-road.eu"
-
-xmlns:id="http://x-road.eu/xsd/identifiers"
-
-xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"&gt;
-
-&lt;SOAP-ENV:Header&gt;
-
-&lt;xrd:client id:objectType="SUBSYSTEM"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER1&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM1&lt;/id:subsystemCode&gt;
-
-&lt;/xrd:client&gt;
-
-&lt;xrd:service id:objectType="SERVICE"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER2&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM2&lt;/id:subsystemCode&gt;
-
-&lt;id:serviceCode&gt;exampleService&lt;/id:serviceCode&gt;
-
-&lt;id:serviceVersion&gt;v1&lt;/id:serviceVersion&gt;
-
-&lt;/xrd:service&gt;
-
-&lt;xrd:id&gt;4894e35d-bf0f-44a6-867a-8e51f1daa7e0&lt;/xrd:id&gt;
-
-&lt;xrd:userId&gt;EE12345678901&lt;/xrd:userId&gt;
-
-&lt;xrd:issue&gt;12345&lt;/xrd:issue&gt;
-
-&lt;xrd:protocolVersion&gt;4.0&lt;/xrd:protocolVersion&gt;
-
-&lt;xrd:requestHash
-
-algorithmId="http://www.w3.org/2001/04/xmlenc\#sha512"&gt;
-
-29KTVbZf83XlfdYrsxjaSYMGoxvktnTUBTtA4BmSrh1e
-
-gtRtvR9VY8QycYaVdsKtGJIh/8CpucYWPbWfaIgJDQ==
-
-&lt;/xrd:requestHash&gt;
-
-&lt;/SOAP-ENV:Header&gt;
-
-&lt;SOAP-ENV:Body&gt;
-
-&lt;ns1:exampleServiceResponse&gt;
-
-&lt;exampleOutput&gt;bar&lt;/exampleOutput&gt;
-
-&lt;/ns1:exampleServiceResponse&gt;
-
-&lt;/SOAP-ENV:Body&gt;
-
-&lt;/SOAP-ENV:Envelope&gt;
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+        xmlns:ns1="http://producer.x-road.eu"
+        xmlns:id="http://x-road.eu/xsd/identifiers"
+        xmlns:xrd="http://x-road.eu/xsd/xroad.xsd">
+    <SOAP-ENV:Header>
+        <xrd:client id:objectType="SUBSYSTEM">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER1</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM1</id:subsystemCode>
+        </xrd:client>
+        <xrd:service id:objectType="SERVICE">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER2</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM2</id:subsystemCode>
+            <id:serviceCode>exampleService</id:serviceCode>
+            <id:serviceVersion>v1</id:serviceVersion>
+        </xrd:service>
+        <xrd:id>4894e35d-bf0f-44a6-867a-8e51f1daa7e0</xrd:id>
+        <xrd:userId>EE12345678901</xrd:userId>
+        <xrd:issue>12345</xrd:issue>
+        <xrd:protocolVersion>4.0</xrd:protocolVersion>
+        <xrd:requestHash
+                algorithmId="http://www.w3.org/2001/04/xmlenc#sha512">
+            29KTVbZf83XlfdYrsxjaSYMGoxvktnTUBTtA4BmSrh1e
+            gtRtvR9VY8QycYaVdsKtGJIh/8CpucYWPbWfaIgJDQ==
+        </xrd:requestHash>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:exampleServiceResponse>
+            <exampleOutput>bar</exampleOutput>
+        </ns1:exampleServiceResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
 
 <a name="annex-f-example-request-with-attachment"></a>
 ## Annex F Example Request with Attachment
 
+```xml
 .. other transport headers ...
-
-Content-Type: multipart/related; type="text/xml"; start="&lt;rootpart&gt;"; boundary="MIME\_boundary"
-
+Content-Type: multipart/related; type="text/xml"; start="<rootpart>"; boundary="MIME_boundary"
 MIME-Version: 1.0
 
---MIME\_boundary
-
+--MIME_boundary
 Content-Type: text/xml; charset=UTF-8
-
 Content-Transfer-Encoding: 8bit
+Content-ID: <rootpart>
 
-Content-ID: &lt;rootpart&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope 
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:ns1="http://producer.x-road.eu"
+        xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
+        xmlns:id="http://x-road.eu/xsd/identifiers">
+    <SOAP-ENV:Header>
+        <xrd:client id:objectType="SUBSYSTEM">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER1</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM1</id:subsystemCode>
+        </xrd:client>
+        <xrd:service id:objectType="SERVICE">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER2</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM2</id:subsystemCode>
+            <id:serviceCode>exampleService</id:serviceCode>
+            <id:serviceVersion>v1</id:serviceVersion>
+        </xrd:service>
+        <xrd:id>4894e35d-bf0f-44a6-867a-8e51f1daa7e0</xrd:id>
+        <xrd:userId>EE12345678901</xrd:userId>
+        <xrd:issue>12345</xrd:issue>
+        <xrd:protocolVersion>4.0</xrd:protocolVersion>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:exampleServiceSwaRef>
+            <exampleInput>foo</exampleInput>
+            <exampleAttachment>cid:data.bin</exampleAttachment>
+        </ns1:exampleServiceSwaRef>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;SOAP-ENV:Envelope
-
-xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-
-xmlns:ns1="http://producer.x-road.eu"
-
-xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
-
-xmlns:id="http://x-road.eu/xsd/identifiers"&gt;
-
-&lt;SOAP-ENV:Header&gt;
-
-&lt;xrd:client id:objectType="SUBSYSTEM"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER1&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM1&lt;/id:subsystemCode&gt;
-
-&lt;/xrd:client&gt;
-
-&lt;xrd:service id:objectType="SERVICE"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER2&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM2&lt;/id:subsystemCode&gt;
-
-&lt;id:serviceCode&gt;exampleService&lt;/id:serviceCode&gt;
-
-&lt;id:serviceVersion&gt;v1&lt;/id:serviceVersion&gt;
-
-&lt;/xrd:service&gt;
-
-&lt;xrd:id&gt;4894e35d-bf0f-44a6-867a-8e51f1daa7e0&lt;/xrd:id&gt;
-
-&lt;xrd:userId&gt;EE12345678901&lt;/xrd:userId&gt;
-
-&lt;xrd:issue&gt;12345&lt;/xrd:issue&gt;
-
-&lt;xrd:protocolVersion&gt;4.0&lt;/xrd:protocolVersion&gt;
-
-&lt;/SOAP-ENV:Header&gt;
-
-&lt;SOAP-ENV:Body&gt;
-
-&lt;ns1:exampleServiceSwaRef&gt;
-
-&lt;exampleInput&gt;foo&lt;/exampleInput&gt;
-
-&lt;exampleAttachment&gt;cid:data.bin&lt;/exampleAttachment&gt;
-
-&lt;/ns1:exampleServiceSwaRef&gt;
-
-&lt;/SOAP-ENV:Body&gt;
-
-&lt;/SOAP-ENV:Envelope&gt;
-
---MIME\_boundary
-
+--MIME_boundary
 Content-Type: application/octet-stream; name=data.bin
-
 Content-Transfer-Encoding: base64
-
-Content-ID: &lt;data.bin&gt;
-
+Content-ID: <data.bin>
 Content-Disposition: attachment; name="data.bin"; filename="data.bin"
 
 VGhpcyBpcyBhdHRhY2htZW50Lg0K
-
---MIME\_boundary--
+--MIME_boundary--
+```
 
 <a name="annex-g-example-request-with-mtom-attachment"></a>
 ## Annex G Example Request with MTOM Attachment
-
+```xml
 ... other transport headers ...
-
-Content-Type: multipart/related; type="application/xop+xml"; start="&lt;rootpart&gt;"; start-info="text/xml"; boundary="MIME\_boundary"
-
+Content-Type: multipart/related; type="application/xop+xml"; start="<rootpart>"; start-info="text/xml"; boundary="MIME_boundary"
 MIME-Version: 1.0
 
---MIME\_boundary
-
+--MIME_boundary
 Content-Type: application/xop+xml; charset=UTF-8; type="text/xml"
-
 Content-Transfer-Encoding: 8bit
+Content-ID: <rootpart>
 
-Content-ID: &lt;rootpart&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope 
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:ns1="http://producer.x-road.eu"
+        xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
+        xmlns:id="http://x-road.eu/xsd/identifiers">
+    <SOAP-ENV:Header>
+        <xrd:client id:objectType="SUBSYSTEM">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER1</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM1</id:subsystemCode>
+        </xrd:client>
+        <xrd:service id:objectType="SERVICE">
+            <id:xRoadInstance>EE</id:xRoadInstance>
+            <id:memberClass>GOV</id:memberClass>
+            <id:memberCode>MEMBER2</id:memberCode>
+            <id:subsystemCode>SUBSYSTEM2</id:subsystemCode>
+            <id:serviceCode>exampleService</id:serviceCode>
+            <id:serviceVersion>v1</id:serviceVersion>
+        </xrd:service>
+        <xrd:id>4894e35d-bf0f-44a6-867a-8e51f1daa7e0</xrd:id>
+        <xrd:userId>EE12345678901</xrd:userId>
+        <xrd:issue>12345</xrd:issue>
+        <xrd:protocolVersion>4.0</xrd:protocolVersion>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:exampleServiceMtom>
+            <exampleInput>foo</exampleInput>
+            <exampleAttachment>
+                <inc:Include href="cid:data.bin"
+                        xmlns:inc="http://www.w3.org/2004/08/xop/include" />
+            </exampleAttachment>
+        </ns1:exampleServiceMtom>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;SOAP-ENV:Envelope
-
-xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-
-xmlns:ns1="http://producer.x-road.eu"
-
-xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
-
-xmlns:id="http://x-road.eu/xsd/identifiers"&gt;
-
-&lt;SOAP-ENV:Header&gt;
-
-&lt;xrd:client id:objectType="SUBSYSTEM"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER1&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM1&lt;/id:subsystemCode&gt;
-
-&lt;/xrd:client&gt;
-
-&lt;xrd:service id:objectType="SERVICE"&gt;
-
-&lt;id:xRoadInstance&gt;EE&lt;/id:xRoadInstance&gt;
-
-&lt;id:memberClass&gt;GOV&lt;/id:memberClass&gt;
-
-&lt;id:memberCode&gt;MEMBER2&lt;/id:memberCode&gt;
-
-&lt;id:subsystemCode&gt;SUBSYSTEM2&lt;/id:subsystemCode&gt;
-
-&lt;id:serviceCode&gt;exampleService&lt;/id:serviceCode&gt;
-
-&lt;id:serviceVersion&gt;v1&lt;/id:serviceVersion&gt;
-
-&lt;/xrd:service&gt;
-
-&lt;xrd:id&gt;4894e35d-bf0f-44a6-867a-8e51f1daa7e0&lt;/xrd:id&gt;
-
-&lt;xrd:userId&gt;EE12345678901&lt;/xrd:userId&gt;
-
-&lt;xrd:issue&gt;12345&lt;/xrd:issue&gt;
-
-&lt;xrd:protocolVersion&gt;4.0&lt;/xrd:protocolVersion&gt;
-
-&lt;/SOAP-ENV:Header&gt;
-
-&lt;SOAP-ENV:Body&gt;
-
-&lt;ns1:exampleServiceMtom&gt;
-
-&lt;exampleInput&gt;foo&lt;/exampleInput&gt;
-
-&lt;exampleAttachment&gt;
-
-&lt;inc:Include href="cid:data.bin"
-
-xmlns:inc="http://www.w3.org/2004/08/xop/include" /&gt;
-
-&lt;/exampleAttachment&gt;
-
-&lt;/ns1:exampleServiceMtom&gt;
-
-&lt;/SOAP-ENV:Body&gt;
-
-&lt;/SOAP-ENV:Envelope&gt;
-
---MIME\_boundary
-
+--MIME_boundary
 Content-Type: application/octet-stream; name=data.bin
-
 Content-Transfer-Encoding: base64
-
-Content-ID: &lt;data.bin&gt;
-
+Content-ID: <data.bin>
 Content-Disposition: attachment; name="data.bin"; filename="data.bin"
 
 VGhpcyBpcyBhdHRhY2htZW50Lg0K
-
---MIME\_boundary--
-
-[1] http://www.w3.org/TR/2000/NOTE-SOAP-20000508/\#\_Toc478383507
-
-[2] http://www.ibm.com/developerworks/library/ws-usagewsdl/
+--MIME_boundary--
+```
