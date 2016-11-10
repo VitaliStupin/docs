@@ -1256,7 +1256,7 @@ VGhpcyBpcyBhdHRhY2htZW50Lg0K
 
 ## <a name="annex-g-example-request-with-mtom-attachment"></a>Annex G Example Request with MTOM Attachment
 ```xml
-... other transport headers ...
+... other transport headers ... The following HTTP header is wrapped for readability:
 Content-Type: multipart/related; type="application/xop+xml"; start="<rootpart>"; 
     start-info="text/xml"; boundary="MIME_boundary"
 MIME-Version: 1.0
