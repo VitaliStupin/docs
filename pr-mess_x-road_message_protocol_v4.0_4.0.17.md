@@ -49,13 +49,13 @@ Doc. ID: PR-MESS
 [Annex F Example Request with Attachment](#annex-f-example-request-with-attachment)  
 [Annex G Example Request with MTOM Attachment](#annex-g-example-request-with-mtom-attachment)  
 
-<a name="license"></a>
-## License
+
+## <a name="license"></a>License
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
 
-<a name="1-introduction"></a>
-## 1 Introduction
+
+## <a name="1-introduction"></a>1 Introduction
 
 This specification describes the X-Road message protocol version 4.0. This protocol is used between information systems and security servers in the X-Road system. The protocol is implemented as a profile of the SOAP 1.1 protocol \[[SOAP](#Ref_SOAP)\]. Because this protocol inherits the general model, the transport mechanism, and the error handling mechanism of the base SOAP protocol, these issues are not discussed separately in this specification.
 
@@ -65,8 +65,8 @@ This specification does not include option for partially implementing the protoc
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document (in uppercase, as shown) are to be interpreted as described in \[[RFC2119](#Ref_RFC2119)\].
 
-<a name="11-terms-and-abbreviations"></a>
-### 1.1 Terms and Abbreviations
+
+### <a name="11-terms-and-abbreviations"></a>1.1 Terms and Abbreviations
 
 -   **X-Road member** – natural or legal person who uses functionality offered by X-Road
 
@@ -76,8 +76,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 -   **X-Road service** – SOAP-based web service that is offered by an X-Road member or by a subsystem and that can be used by other X-Road members or subsystems.
 
-<a name="12-references"></a>
-### 1.2 References
+
+### <a name="12-references"></a>1.2 References
 
 <a name="Ref_SOAP"></a>\[SOAP\] Simple Object Access Protocol (SOAP) 1.1, 2000.
 
