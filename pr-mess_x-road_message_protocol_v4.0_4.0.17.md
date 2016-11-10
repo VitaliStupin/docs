@@ -2,7 +2,7 @@
 **Technical Specification**    
 
 Version: 4.0.17  
-09.11.2016  
+10.11.2016  
 Doc. ID: PR-MESS  
 
 | Date       | Version     | Description                                                                  | Author             |
@@ -22,7 +22,7 @@ Doc. ID: PR-MESS
 | 25.01.2016 | 4.0.14      | Minor fixes                                                                  | Kristo Heero       |
 | 10.05.2016 | 4.0.15      | Added section about character encoding                                       | Kristo Heero       |
 | 16.05.2016 | 4.0.16      | Editorial changes made                                                       | Margus Freudenthal |
-| 09.11.2016 | 4.0.17      | Converted to Markdown                                                        | Vitali Stupin      |
+| 10.11.2016 | 4.0.17      | Converted to Markdown                                                        | Vitali Stupin      |
 
 ## Table of Contents
 
