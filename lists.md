@@ -15,7 +15,7 @@
 3.  System gets an OCSP response from one of the found OCSP responders.
 ```
 
-## 1. Plain text (does not work as intended):
+## 1. Plain text (does not work as intended)
 
 1.  System finds OCSP responder addresses from the global configuration.
 
@@ -73,7 +73,7 @@
 
 3\.  System gets an OCSP response from one of the found OCSP responders.
 
-## 5. Indent with `&nbsp;` (not readable in md form and hard to produce)
+## 5. Indent with `&nbsp;` (not readable in md form and hard to produce, wraps long lines with the wrong ident)
 
 &nbsp;&nbsp;&nbsp;&nbsp;1.  System finds OCSP responder addresses from the global configuration.
 
@@ -99,7 +99,7 @@
 
     * 2.2. System verifies that the signer is currently authorized to sign the OCSP responses for the certificate authority that has issued the certificate the OCSP response was given to.
 
-## 7. Bulleted + numbered list v2 (still needs escaping, not so beautiful, but has indents and is easy to produce)
+## 7. Bulleted + numbered list v2 (still needs escaping, not so beautiful, but has indents and is easy to produce; probly is the best solution)
 
 1\. System finds OCSP responder addresses from the global configuration.
 
