@@ -73,7 +73,7 @@
 
 3\.  System gets an OCSP response from one of the found OCSP responders.
 
-## 4. Indent with `&nbsp;` (not readable in md form and hard to produce)
+## 5. Indent with `&nbsp;` (not readable in md form and hard to produce)
 
 &nbsp;&nbsp;&nbsp;&nbsp;1.  System finds OCSP responder addresses from the global configuration.
 
@@ -87,7 +87,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;3.  System gets an OCSP response from one of the found OCSP responders.
 
-## 5. Bulleted + numbered list (still needs escaping, not so beautiful, but has indents and is easy to produce)
+## 6. Bulleted + numbered list (still needs escaping, not so beautiful, but has indents and is easy to produce)
 
 * 1\. System finds OCSP responder addresses from the global configuration.
 
@@ -101,7 +101,7 @@
 
 * 3\. System gets an OCSP response from one of the found OCSP responders.
 
-## 6. Quotation v1 (do lines look better bullets? Gray font visibility?)
+## 7. Quotation v1 (do lines look better bullets? Gray font visibility?)
 
 > 1.  System finds OCSP responder addresses from the global configuration.
 
@@ -115,7 +115,7 @@
 
 > 3.  System gets an OCSP response from one of the found OCSP responders.
 
-## 7. Quotation v2 (first level needs escaping)
+## 8. Quotation v2 (first level needs escaping)
 
 1\.  System finds OCSP responder addresses from the global configuration.
 
