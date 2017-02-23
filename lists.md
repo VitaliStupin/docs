@@ -87,7 +87,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;3.  System gets an OCSP response from one of the found OCSP responders.
 
-## 6. Bulleted + numbered list (still needs escaping, not so beautiful, but has indents and is easy to produce)
+## 6. Bulleted + numbered list v1 (still needs escaping, not so beautiful, but has indents and is easy to produce)
 
 * 1\. System finds OCSP responder addresses from the global configuration.
 
@@ -99,9 +99,21 @@
 
     * 2.2. System verifies that the signer is currently authorized to sign the OCSP responses for the certificate authority that has issued the certificate the OCSP response was given to.
 
-* 3\. System gets an OCSP response from one of the found OCSP responders.
+## 7. Bulleted + numbered list v2 (still needs escaping, not so beautiful, but has indents and is easy to produce)
 
-## 7. Quotation v1 (do lines look better bullets? Gray font visibility?)
+1\. System finds OCSP responder addresses from the global configuration.
+
+2\. System verifies the OCSP response:
+
+* 2.1. System verifies that the certificate identified in a response received from the OCSP responder corresponds to the one in the corresponding request.
+
+    * 2.1.1. System verifies that the signature on the OSCP response is valid.
+
+* 2.2. System verifies that the signer is currently authorized to sign the OCSP responses for the certificate authority that has issued the certificate the OCSP response was given to.
+
+3\. System gets an OCSP response from one of the found OCSP responders.
+
+## 8. Quotation v1 (do lines look better bullets? Gray font visibility?)
 
 > 1.  System finds OCSP responder addresses from the global configuration.
 
@@ -115,7 +127,7 @@
 
 > 3.  System gets an OCSP response from one of the found OCSP responders.
 
-## 8. Quotation v2 (first level needs escaping)
+## 9. Quotation v2 (first level needs escaping)
 
 1\.  System finds OCSP responder addresses from the global configuration.
 
