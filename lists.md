@@ -113,7 +113,7 @@
 
 3\. System gets an OCSP response from one of the found OCSP responders.
 
-## 8. Quotation v1 (do lines look better bullets? Gray font visibility?)
+## 8. Quotation v1 (do lines look better than bullets? Gray font visibility? Bad compatibility with other markdown variants.)
 
 > 1.  System finds OCSP responder addresses from the global configuration.
 
