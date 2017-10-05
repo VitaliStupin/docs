@@ -1,3 +1,23 @@
+### 2.9 UC CS\_08: Restore Configuration from a Backup File
+
+**System**: Central server
+
+**Level**: User task
+
+**Component:** Central server
+
+**Actor**: CS administrator
+
+**Brief Description**: CS administrator restores the central server
+configuration from a backup file.
+
+**Preconditions**: A backup file is saved in the system configuration.
+
+**Postconditions**: -
+
+**Trigger**: CS administrator wants to restore the central server
+configuration to a previously backed up state.
+
 **Main Success Scenario**:
 
 1.  CS administrator selects to restore the central server configuration
@@ -55,3 +75,27 @@
     i.  restores the database data from the dump file /var/lib/xroad/dbdump.dat.
     
     j.  starts the system services that were previously stopped.
+
+5.  System displays the message “Configuration restored successfully
+    from file 'X'.” (where X is the file name of the backup file) and
+    the output of the restore script.
+
+6.  System logs the event “Restore configuration” to the audit log.
+
+**Extensions**:
+
+- 3a. CS administrator cancels the restoring of the configuration from the backup file.
+    - 3a.1. Use case terminates.
+
+- 4a. Restoring the central server configuration failed.
+    - 4a.1. System displays the error message “Restoring configuration from file 'X' failed.” (where “X” is the file name of the backup file) and the output of the restore script.
+    - 4a.2. System logs the event “Restore configuration failed” to the audit log.
+    - 4a.3. Use case terminates.
+
+**Related information**:
+
+-   The backup files are located at /var/lib/xroad/backup.
+
+-   The audit log is located at /var/log/xroad/audit.log. The data set
+    of audit log records is described in the document “X-Road: Audit Log
+    Events” \[[SPEC-AL](#Ref_SPEC-AL)\].
