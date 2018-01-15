@@ -23,8 +23,13 @@ Check that oplog is being collected:
 ```
 rs.printReplicationInfo()
 ```
-TODO: Next you need to create a user with sufficient rihts to query replication data from MongoDB.
-In this example a "root" user is used.
+
+From MongoDB shell create a user with sufficient rihts to query replication data from MongoDB. You need to add "read" role
+for "local" database to read oplog data and "read" roles for all databases that need to be replicated:
+```
+use admin
+db.createUser({user: "xtee-ci-xm-replica", pwd: "PasswordForOplogger", roles: [{role: "read", db: "local"}, {role: "read", db: "query_db_XTEE-CI-XM"}]})
+```
 
 ## Kibana server
 
@@ -744,8 +749,8 @@ mkdir /opt/riajenk/xtee-ci-xm
 {
     "mainAddress": "opmon.ci.kit:27017",
     "authentication": {
-        "adminUsername": "root",
-        "password": "<ROOT_PASSWORD>"
+        "adminUsername": "xtee-ci-xm-replica",
+        "password": "PasswordForOplogger"
     },
     "namespaces": {
         "query_db_XTEE-CI-XM.clean_data": "opmon-xtee-ci-xm.clean_data"
