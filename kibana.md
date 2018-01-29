@@ -837,8 +837,8 @@ while (scroll_size > 0):
         doc['startTs'] = data['requestInTs']
         doc['consumerMember'] = '/'.join([data['clientXRoadInstance'] or '', data['clientMemberClass'] or '', data['clientMemberCode'] or ''])
         doc['consumerSystem'] = '/'.join([data['clientXRoadInstance'] or '', data['clientMemberClass'] or '', data['clientMemberCode'] or '', data['clientSubsystemCode'] or ''])
-        doc['producerSystem'] = '/'.join([data['serviceXRoadInstance'] or '', data['serviceMemberClass'] or '', data['serviceMemberCode'] or ''])
-        doc['producerMember'] = '/'.join([data['serviceXRoadInstance'] or '', data['serviceMemberClass'] or '', data['serviceMemberCode'] or '', data['serviceSubsystemCode'] or ''])
+        doc['producerMember'] = '/'.join([data['serviceXRoadInstance'] or '', data['serviceMemberClass'] or '', data['serviceMemberCode'] or ''])
+        doc['producerSystem'] = '/'.join([data['serviceXRoadInstance'] or '', data['serviceMemberClass'] or '', data['serviceMemberCode'] or '', data['serviceSubsystemCode'] or ''])
         doc['service'] = '/'.join([data['serviceXRoadInstance'] or '', data['serviceMemberClass'] or '', data['serviceMemberCode'] or '',
             data['serviceSubsystemCode'] or '', data['serviceCode'] or '', data['serviceVersion'] or ''])
         doc['succeeded'] = data['succeeded']
