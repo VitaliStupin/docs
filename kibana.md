@@ -777,6 +777,7 @@ User=riajenk
 Restart=always
 RestartSec=10
 WorkingDirectory=/opt/riajenk/xtee-ci-xm
+ExecStartPre=/bin/sleep 30
 ExecStart=/usr/local/bin/mongo-connector -c /opt/riajenk/xtee-ci-xm/config.json
 
 [Install]
@@ -893,6 +894,23 @@ And adding the following line:
 * * * * * flock -xn /opt/riajenk/xtee-ci-xm/partition.lock -c "/opt/riajenk/partition.py opmon-xtee-ci-xm"
 ```
 
+## Known issues
+
+If Logstash is offline (rejects connections) while mongo-connector tries to replicate data from MongoDB,
+then it is possible that oplog.timestamp is updated while data is not replicated. The following lines should appear
+in mongo-connector.log:
+
+```
+2018-01-31 14:33:58,550 [WARNING] elasticsearch:97 - GET http://localhost:9200/_mget?realtime=true [status:N/A request:0.000s]
+Traceback (most recent call last):
+...
+  File "/usr/local/lib/python2.7/dist-packages/urllib3/connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f54fb59f7d0>: Failed to establish a new connection: [Errno 111] Connection refused
+```
+
+After that mongo-connector service would apper as running while actually no data is being replicated.
+
 ## Problem debuging and solving
 
 **Checking if oplog is big enough:**
@@ -961,6 +979,7 @@ Example output:
 ```
 
 **To correct syncronization issue (data is out of sync while oplog.timestamp is up to date / oplog.timestamp is corrupted):**
+Reapplying oplog:
 ```
 sudo systemctl stop mongo-connector-xtee-ci-xm
 /opt/riajenk/xtee-ci-xm
