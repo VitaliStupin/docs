@@ -894,6 +894,7 @@ And adding the following line:
 ```
 
 ## Problem debuging and solving
+
 **Checking if oplog is big enough:**
 
 In MongoDB:
@@ -907,6 +908,32 @@ Example output:
 ```
 
 This epoch time shold be at least week old, which would give you at least one week to fix any synchronization problems.
+
+**Check if oplog.timestamp if up to date:**
+
+In server that has mongo-connector installed:
+```
+$ cat oplog.timestamp
+["rs0", 6517184251123728386]
+$ python -c 'from mongo_connector.util import long_to_bson_ts; print long_to_bson_ts(6517184251123728386)'
+Timestamp(1517400204, 2)
+```
+
+Note that mongo-connector does not update oplog.timestamp in real time, so you might need to stop mongo-connector
+before checking oplog.timestamp
+
+The reverse convertion:
+```
+python -c 'from bson.timestamp import Timestamp; from mongo_connector.util import bson_ts_to_long; print bson_ts_to_long(Timestamp(1517400204, 2))'
+```
+
+Additionally it is possible to query oplog to see the last synchronized item (in MongoDB shell):
+
+```
+rs0:PRIMARY> db.getSiblingDB("local").oplog.rs.find( {"ts": Timestamp(1517400204, 2)} )
+{ "ts" : Timestamp(1517400204, 2), "t" : NumberLong(3), "h" : NumberLong("-7189340831937961635"), "v" : 2, "op" : "u", "ns" : "query_db_XTEE-CI-XM.clean_data", "o2" : { "_id" : ObjectId("5a688459612d52480b8999e2") }, "o" : { "$set" : { "correctorTime" : 1517400204.2664201, "correctorStatus" : "done" } } }
+
+```
 
 **To make sure all data was transfered and partitioned from MongoDB to Elasticsearch execute the following commands:**
 
