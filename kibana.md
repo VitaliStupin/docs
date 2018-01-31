@@ -913,7 +913,7 @@ This epoch time shold be at least week old, which would give you at least one we
 
 In server that has mongo-connector installed:
 ```
-$ cat oplog.timestamp
+$ cat /opt/riajenk/xtee-ci-xm/oplog.timestamp
 ["rs0", 6517184251123728386]
 $ python -c 'from mongo_connector.util import long_to_bson_ts; print long_to_bson_ts(6517184251123728386)'
 Timestamp(1517400204, 2)
