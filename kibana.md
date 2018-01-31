@@ -788,6 +788,8 @@ sudo systemctl daemon-reload
 sudo systemctl start mongo-connector-xtee-ci-xm.service
 ```
 
+Note that mongo-connector will sleep for 30 seconds before starting to make sure that elasticsearch service has started properly.
+
 Start mongo-connector daemon:
 ```
 sudo systemctl daemon-reload
