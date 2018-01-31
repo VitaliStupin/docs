@@ -996,3 +996,32 @@ sudo systemctl stop mongo-connector-xtee-ci-xm
 
 Note that this will try to replay oplog without dumping the full database, and therefore this method can be used only if
 syncronization issue is recent enough.
+
+Alternatively it is possible to replay oplog partially. If you know that data syncronisation was working properly up to
+sertain time you can select time before last data was received and calculate a new value for oplog.timestamp.
+
+In the following example we assume that there were successful replications after epoch time "1517389200".
+
+First we find in MongoDB one of the oplog items that was already successfully replicated:
+```
+rs0:PRIMARY> db.getSiblingDB("local").oplog.rs.find( {"ts": {$gt: Timestamp(1517389200, 1)}} ).sort({"ts": 1}).limit(1)
+{ "ts" : Timestamp(1517389210, 1), "t" : NumberLong(3), "h" : NumberLong("-5524383954901817504"), "v" : 2, "op" : "n", "ns" : "", "o" : { "msg" : "periodic noop" } }
+```
+
+Then we calculate a valid value for oplog.timestamp (in mongo-connector server):
+```
+$ python -c 'from bson.timestamp import Timestamp; from mongo_connector.util import bson_ts_to_long; print bson_ts_to_long(Timestamp(1517389210, 1))'
+6517137032253276161
+```
+
+Then we stop the service:
+```
+sudo systemctl stop mongo-connector-xtee-ci-xm
+```
+
+Update oplog.timestamp with new value "6517137032253276161"
+
+And start the service again:
+```
+sudo systemctl start mongo-connector-xtee-ci-xm
+```
