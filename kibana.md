@@ -889,3 +889,29 @@ And adding the following line:
 ```
 * * * * * flock -xn /opt/riajenk/xtee-ci-xm/partition.lock -c "/opt/riajenk/partition.py opmon-xtee-ci-xm"
 ```
+
+## Problem debuging
+To make sure all data was transfered and partitioned from MongoDB to Elasticsearch execute the following commands:
+
+In MongoDB:
+```
+db.clean_data.find({ correctorStatus: {$not: /done/} }).count()
+```
+
+Example output: `2773`
+
+In Elasticsearch server:
+```
+curl http://localhost:9200/opmon-xtee-ci-xm/_stats/docs?pretty
+```
+
+Example output:
+```
+...
+  "indices" : {
+    "opmon-xtee-ci-xm" : {
+      "primaries" : {
+        "docs" : {
+          "count" : 2773,
+...
+```
