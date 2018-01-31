@@ -9,6 +9,9 @@ replication:
   oplogSizeMB: 100
 ```
 
+Note that oplogSizeMB must be big enough so that syncronization issues could be fixed before older items in oplog are rewriten
+by newer ones.
+
 Restart MongoDB server:
 ```
 service mongod restart
@@ -890,8 +893,22 @@ And adding the following line:
 * * * * * flock -xn /opt/riajenk/xtee-ci-xm/partition.lock -c "/opt/riajenk/partition.py opmon-xtee-ci-xm"
 ```
 
-## Problem debuging
-To make sure all data was transfered and partitioned from MongoDB to Elasticsearch execute the following commands:
+## Problem debuging and solving
+**Checking if oplog is big enough:**
+
+In MongoDB:
+```
+db.getSiblingDB("local").oplog.rs.find().sort( {"ts": 1} ).limit(1)
+```
+
+Example output:
+```
+"ts" : Timestamp(1514359228, 1)
+```
+
+This epoch time shold be at least week old, which would give you at least one week to fix any synchronization problems.
+
+**To make sure all data was transfered and partitioned from MongoDB to Elasticsearch execute the following commands:**
 
 In MongoDB:
 ```
@@ -915,3 +932,21 @@ Example output:
           "count" : 2773,
 ...
 ```
+
+**To correct syncronization issue (data is out of sync while oplog.timestamp is up to date / oplog.timestamp is corrupted):**
+```
+sudo systemctl stop mongo-connector-xtee-ci-xm
+/opt/riajenk/xtee-ci-xm
+mv oplog.timestamp oplog.timestamp_bak
+/usr/local/bin/mongo-connector -c config.json --no-dump
+```
+Wait untill syncronisation completes (compare counts in MongoDB and Elasticsearch), then stop mongo-connector
+with keyboard combination "ctrl + c".
+
+Then you can start the service again:
+```
+sudo systemctl stop mongo-connector-xtee-ci-xm
+```
+
+Note that this will try to replay oplog without dumping the full database, and therefore this method can be used only if
+syncronization issue is recent enough.
