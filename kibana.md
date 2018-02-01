@@ -1029,3 +1029,5 @@ And start the service again:
 ```
 sudo systemctl start mongo-connector-xtee-ci-xm
 ```
+
+It is also possible to periodically backup oplog.timestamp which may simplify calculation of timestamps for oplog.timestamp.
