@@ -898,6 +898,8 @@ And adding the following line:
 
 ## Known issues
 
+https://github.com/mongodb-labs/mongo-connector/issues/791
+
 If Logstash is offline (rejects connections) while mongo-connector tries to replicate data from MongoDB,
 then it is possible that oplog.timestamp is updated while data is not replicated. The following lines should appear
 in mongo-connector.log:
