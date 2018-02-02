@@ -883,7 +883,7 @@ while (scroll_size > 0):
     sid = page['_scroll_id']
     scroll_size = len(page['hits']['hits'])
 EOF
-chmod a+x /opt/riajenk/partition.py
+chmod u+x /opt/riajenk/partition.py
 ```
 
 And configure crontab by running:
