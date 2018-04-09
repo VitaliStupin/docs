@@ -751,6 +751,9 @@ mkdir /opt/riajenk/xtee-ci-xm
  cat > /opt/riajenk/xtee-ci-xm/config.json <<EOF
 {
     "mainAddress": "opmon.ci.kit:27017",
+    "logging": {
+        "__rotationBackups": 60
+    },
     "authentication": {
         "adminUsername": "xtee-ci-xm-replica",
         "password": "PasswordForOplogger"
